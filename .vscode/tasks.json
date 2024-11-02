@@ -1,0 +1,40 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "debug",
+            "type": "shell",
+            "command": "make",
+            "args": ["debug"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "release",
+            "type": "shell",
+            "command": "make",
+            "args": ["release"],
+            "group": "build",
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "make",
+            "args": ["clean"],
+            "group": "build",
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "make",
+            "args": ["run"],
+            "group": "test",
+            "problemMatcher": []
+        }
+    ]
+}

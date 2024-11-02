@@ -2,14 +2,15 @@
 CC = gcc
 
 # Library and executable names
-LIB_NAME = libUOCTaxation
-EXEC_NAME = UOC20241
+LIB_NAME = dmos
+EXEC_NAME = dm50
 
 # Directories
-LIB_DIR = UOCTaxation
+LIB_DIR = dmos
 LIB_INCLUDE = $(LIB_DIR)/include
 LIB_SRC = $(LIB_DIR)/src
 LIB_OUT_DIR = $(LIB_DIR)/lib
+
 APP_SRC = src
 APP_INCLUDE = test/include
 APP_TEST_SRC = test/src
@@ -27,12 +28,12 @@ BUILD_TYPE ?= debug
 # Compilation and linking options based on BUILD_TYPE
 ifeq ($(BUILD_TYPE),debug)
     CFLAGS = -g -Wall -I$(LIB_INCLUDE) -I$(APP_INCLUDE)
-    LDFLAGS = -L$(LIB_OUT_DIR) -lUOCTaxationd
+    LDFLAGS = -L$(LIB_OUT_DIR) -ldmosd
     LIBRARY = $(LIB_OUT_DIR)/$(LIB_NAME)d.a
     EXECUTABLE = $(BIN_DIR)/$(EXEC_NAME)d
 else ifeq ($(BUILD_TYPE),release)
     CFLAGS = -O2 -Wall -I$(LIB_INCLUDE) -I$(APP_INCLUDE)
-    LDFLAGS = -L$(LIB_OUT_DIR) -lUOCTaxation
+    LDFLAGS = -L$(LIB_OUT_DIR) -ldmos
     LIBRARY = $(LIB_OUT_DIR)/$(LIB_NAME).a
     EXECUTABLE = $(BIN_DIR)/$(EXEC_NAME)
 endif
