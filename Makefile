@@ -1,5 +1,6 @@
-# Compiler
 CC = gcc
+PLATFORM ?= linux
+BUILD_TYPE ?= debug
 
 # Library and executable names
 LIB_NAME = dmos
@@ -7,35 +8,32 @@ EXEC_NAME = dm50
 
 # Directories
 LIB_DIR = dmos
-LIB_INCLUDE = $(LIB_DIR)/include
 LIB_SRC = $(LIB_DIR)/src
+LIB_INCLUDE = $(LIB_DIR)/include
 LIB_OUT_DIR = $(LIB_DIR)/lib
 
-APP_SRC = src
-APP_INCLUDE = test/include
-APP_TEST_SRC = test/src
-BIN_DIR = bin
+APP_DIR = dm50
+APP_SRC = $(APP_DIR)/src
+APP_INCLUDE = $(APP_DIR)/include/
+BIN_DIR = $(APP_DIR)/bin
 
 # Source and object files
-LIB_SRCS = $(wildcard $(LIB_SRC)/*.c)
-LIB_OBJS = $(LIB_SRCS:.c=.o)
-APP_SRCS = $(wildcard $(APP_SRC)/*.c) $(wildcard $(APP_TEST_SRC)/*.c)  # Include all .c files
+LIB_SRCS = $(wildcard $(LIB_SRC)/*.c) $(wildcard $(LIB_SRC)/$(PLATFORM)/*.c)
+APP_SRCS = $(wildcard $(APP_SRC)/*.c) $(wildcard $(APP_SRC)/$(PLATFORM)/*.c)
 APP_OBJS = $(APP_SRCS:.c=.o)
-
-# Default to debug if BUILD_TYPE is not set
-BUILD_TYPE ?= debug
+LIB_OBJS = $(LIB_SRCS:.c=.o)
 
 # Compilation and linking options based on BUILD_TYPE
 ifeq ($(BUILD_TYPE),debug)
     CFLAGS = -g -Wall -I$(LIB_INCLUDE) -I$(APP_INCLUDE)
     LDFLAGS = -L$(LIB_OUT_DIR) -ldmosd
-    LIBRARY = $(LIB_OUT_DIR)/$(LIB_NAME)d.a
-    EXECUTABLE = $(BIN_DIR)/$(EXEC_NAME)d
+    LIBRARY = $(LIB_OUT_DIR)/lib$(LIB_NAME)d.a
+    EXECUTABLE = $(BIN_DIR)/$(PLATFORM)/$(EXEC_NAME)d
 else ifeq ($(BUILD_TYPE),release)
     CFLAGS = -O2 -Wall -I$(LIB_INCLUDE) -I$(APP_INCLUDE)
     LDFLAGS = -L$(LIB_OUT_DIR) -ldmos
-    LIBRARY = $(LIB_OUT_DIR)/$(LIB_NAME).a
-    EXECUTABLE = $(BIN_DIR)/$(EXEC_NAME)
+    LIBRARY = $(LIB_OUT_DIR)/lib$(LIB_NAME).a
+    EXECUTABLE = $(BIN_DIR)/$(PLATFORM)/$(EXEC_NAME)
 endif
 
 # Default target: builds both library and application in debug mode
