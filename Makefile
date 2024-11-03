@@ -17,6 +17,11 @@ APP_SRC = $(APP_DIR)/src
 APP_INCLUDE = $(APP_DIR)/include/
 BIN_DIR = $(APP_DIR)/bin
 
+SDL2_DIR = external/SDL2
+SDL2_BUILD_DIR = $(SDL2_DIR)/build
+SDL2_LIB = $(SDL2_BUILD_DIR)/lib/libSDL2.a
+SDL2_INCLUDE = $(SDL2_BUILD_DIR)/include/SDL2
+
 # Source and object files
 LIB_SRCS = $(wildcard $(LIB_SRC)/*.c) $(wildcard $(LIB_SRC)/$(PLATFORM)/*.c)
 APP_SRCS = $(wildcard $(APP_SRC)/*.c) $(wildcard $(APP_SRC)/$(PLATFORM)/*.c)
@@ -26,7 +31,7 @@ LIB_OBJS = $(LIB_SRCS:.c=.o)
 # Compilation and linking options based on BUILD_TYPE
 ifeq ($(BUILD_TYPE),debug)
     CFLAGS = -g -Wall -I$(LIB_INCLUDE) -I$(APP_INCLUDE)
-    LDFLAGS = -L$(LIB_OUT_DIR) -ldmosd
+    LDFLAGS = -L$(LIB_OUT_DIR) -ldmosd -L$(SDL2_BUILD_DIR)/lib -lSDL2
     LIBRARY = $(LIB_OUT_DIR)/lib$(LIB_NAME)d.a
     EXECUTABLE = $(BIN_DIR)/$(PLATFORM)/$(EXEC_NAME)d
 else ifeq ($(BUILD_TYPE),release)
@@ -37,7 +42,7 @@ else ifeq ($(BUILD_TYPE),release)
 endif
 
 # Default target: builds both library and application in debug mode
-all: clean lib app
+all: clean lib sdl2 app
 
 # Debug build target
 debug: clean lib app
@@ -64,7 +69,15 @@ $(LIB_OUT_DIR) $(BIN_DIR):
 # Clean up object files and output
 clean:
 	rm -f $(LIB_OBJS) $(APP_OBJS) $(LIBRARY) $(EXECUTABLE)
+	cd $(SDL2_DIR) && make clean
 
 # Run the application
 run: app
 	$(EXECUTABLE)
+
+sdl2:
+	@echo "SDL2 compilation ..."
+	cd $(SDL2_DIR) && ./autogen.sh
+	cd $(SDL2_DIR) && ./configure --prefix=$(SDL2_BUILD_DIR) --disable-shared --enable-static
+	cd $(SDL2_DIR) && make
+	cd $(SDL2_DIR) && make install
