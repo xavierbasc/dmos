@@ -6,6 +6,18 @@
 .lo
 .d
 
+external/
+
+# cmake
+/build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+/_deps/
+
+# VSC
+.vscode/
+
 # Thumbnails
 ._*
 

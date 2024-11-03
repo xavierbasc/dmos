@@ -31,7 +31,7 @@ LIB_OBJS = $(LIB_SRCS:.c=.o)
 # Compilation and linking options based on BUILD_TYPE
 ifeq ($(BUILD_TYPE),debug)
     CFLAGS = -g -Wall -I$(LIB_INCLUDE) -I$(APP_INCLUDE)
-    LDFLAGS = -L$(LIB_OUT_DIR) -ldmosd -L$(SDL2_BUILD_DIR)/lib -lSDL2
+    LDFLAGS = -L$(LIB_OUT_DIR) -ldmosd
     LIBRARY = $(LIB_OUT_DIR)/lib$(LIB_NAME)d.a
     EXECUTABLE = $(BIN_DIR)/$(PLATFORM)/$(EXEC_NAME)d
 else ifeq ($(BUILD_TYPE),release)
@@ -42,7 +42,7 @@ else ifeq ($(BUILD_TYPE),release)
 endif
 
 # Default target: builds both library and application in debug mode
-all: clean lib sdl2 app
+all: clean lib app
 
 # Debug build target
 debug: clean lib app
@@ -69,15 +69,12 @@ $(LIB_OUT_DIR) $(BIN_DIR):
 # Clean up object files and output
 clean:
 	rm -f $(LIB_OBJS) $(APP_OBJS) $(LIBRARY) $(EXECUTABLE)
-	cd $(SDL2_DIR) && make clean
 
 # Run the application
 run: app
 	$(EXECUTABLE)
 
-sdl2:
-	@echo "SDL2 compilation ..."
-	cd $(SDL2_DIR) && ./autogen.sh
-	cd $(SDL2_DIR) && ./configure --prefix=$(SDL2_BUILD_DIR) --disable-shared --enable-static
-	cd $(SDL2_DIR) && make
-	cd $(SDL2_DIR) && make install
+external:
+	mkdir -p external/SDL2
+	git clone --depth=1 --branch release-2.26.5 https://github.com/libsdl-org/SDL.git external/SDL2
+	cd external/SDL2 && mkdir -p build && cd build && cmake -DCMAKE_INSTALL_PREFIX=../ -DSDL_STATIC=ON .. && make && make install
