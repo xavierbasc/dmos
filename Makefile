@@ -1,3 +1,6 @@
+# Phony targets
+.PHONY: all clean debug release run external lib app
+
 CC = gcc
 PLATFORM ?= linux
 BUILD_TYPE ?= debug
