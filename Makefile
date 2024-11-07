@@ -1,9 +1,8 @@
-# Phony targets
 .PHONY: all clean debug release run external lib app
 
 CC = gcc
 PLATFORM ?= linux
-BUILD_TYPE ?= debug
+BUILD_TYPE ?= release
 
 # Library and executable names
 LIB_NAME = dmos
@@ -21,9 +20,8 @@ APP_INCLUDE = $(APP_DIR)/include/
 BIN_DIR = $(APP_DIR)/bin
 
 SDL2_DIR = external/SDL2
-SDL2_BUILD_DIR = $(SDL2_DIR)/build
-SDL2_LIB = $(SDL2_BUILD_DIR)/lib/libSDL2.a
-SDL2_INCLUDE = $(SDL2_BUILD_DIR)/include/SDL2
+SDL2_LIB = $(SDL2_DIR)/build/.libs
+SDL2_INCLUDE = $(SDL2_DIR)/include
 
 # Source and object files
 LIB_SRCS = $(wildcard $(LIB_SRC)/*.c) $(wildcard $(LIB_SRC)/$(PLATFORM)/*.c)
@@ -33,13 +31,13 @@ LIB_OBJS = $(LIB_SRCS:.c=.o)
 
 # Compilation and linking options based on BUILD_TYPE
 ifeq ($(BUILD_TYPE),debug)
-    CFLAGS = -g -Wall -I$(LIB_INCLUDE) -I$(APP_INCLUDE)
-    LDFLAGS = -L$(LIB_OUT_DIR) -ldmosd
+    CFLAGS = -g -Wall -I$(LIB_INCLUDE) -I$(APP_INCLUDE) -I$(SDL2_INCLUDE)
+    LDFLAGS = -L$(LIB_OUT_DIR) -ldmosd -L$(SDL2_LIB) -Wl,-Bstatic -lSDL2 -Wl,-Bdynamic -lm -lasound -lm -ldl -lpthread -lpulse -pthread -lsamplerate -lX11 -lXext -lXcursor -lXi -lXfixes -lXrandr -lXss -ldrm -lgbm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -ldecor-0 -lpthread
     LIBRARY = $(LIB_OUT_DIR)/lib$(LIB_NAME)d.a
     EXECUTABLE = $(BIN_DIR)/$(PLATFORM)/$(EXEC_NAME)d
 else ifeq ($(BUILD_TYPE),release)
-    CFLAGS = -O2 -Wall -I$(LIB_INCLUDE) -I$(APP_INCLUDE)
-    LDFLAGS = -L$(LIB_OUT_DIR) -ldmos
+    CFLAGS = -O2 -Wall -I$(LIB_INCLUDE) -I$(APP_INCLUDE) -I$(SDL2_INCLUDE)
+    LDFLAGS = -L$(LIB_OUT_DIR) -ldmos -L$(SDL2_LIB) -Wl,-Bstatic -lSDL2 -Wl,-Bdynamic -lm -lasound -lm -ldl -lpthread -lpulse -pthread -lsamplerate -lX11 -lXext -lXcursor -lXi -lXfixes -lXrandr -lXss -ldrm -lgbm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -ldecor-0 -lpthread
     LIBRARY = $(LIB_OUT_DIR)/lib$(LIB_NAME).a
     EXECUTABLE = $(BIN_DIR)/$(PLATFORM)/$(EXEC_NAME)
 endif
@@ -78,6 +76,8 @@ run: app
 	$(EXECUTABLE)
 
 external:
-	mkdir -p external/SDL2
-	git clone --depth=1 --branch release-2.26.5 https://github.com/libsdl-org/SDL.git external/SDL2
-	cd external/SDL2 && mkdir -p build && cd build && cmake -DCMAKE_INSTALL_PREFIX=../ -DSDL_STATIC=ON .. && make && make install
+    git clone --depth=1 --branch release-2.30.9 https://github.com/libsdl-org/SDL.git external/SDL2 && \
+    cd external/SDL2 && \
+    cmake .. -DCMAKE_BUILD_TYPE=Release && \
+    cmake --build . --config Release && \
+    cd ../../..

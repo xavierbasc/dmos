@@ -18,3 +18,7 @@ SDL2: used for rendering on Windows, MacOS and Linux systems
 To download the external repositories and compile the necessary static libraries, run the following command:
 
 `make external`
+
+# Compilación DMOS
+
+`make`
