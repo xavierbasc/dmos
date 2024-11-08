@@ -19,6 +19,6 @@ To download the external repositories and compile the necessary static libraries
 
 `make external`
 
-# Compilación DMOS
+# DMOS compilation
 
 `make`
