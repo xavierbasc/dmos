@@ -22,3 +22,12 @@ To download the external repositories and compile the necessary static libraries
 # DMOS compilation
 
 `make`
+
+
+# Tools
+
+## Create image include
+
+```shell
+xxd -i dm50_skin.png > dm50_skin.h
+```
