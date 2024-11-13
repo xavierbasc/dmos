@@ -32,8 +32,8 @@ else ifeq ($(PLATFORM),windows)
     LDFLAGS_SDL = -L/path/to/SDL2/lib -lSDL2
 else
     # Configuración por defecto para Linux
-    SDL2_LIB = external/SDL2/build/.libs
-    LDFLAGS_SDL = Wl,-Bstatic -lSDL2 -Wl,-Bdynamic -lm -lasound -lm -ldl -lpthread -lpulse -pthread -lsamplerate -lX11 -lXext -lXcursor -lXi -lXfixes -lXrandr -lXss -ldrm -lgbm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -ldecor-0 -lpthread
+    SDL2_LIB = external/SDL2/build
+    LDFLAGS_SDL = -I$(SDL2_INCLUDE) Wl,-Bstatic -lSDL2 -Wl,-Bdynamic -lm -lasound -lm -ldl -lpthread -lpulse -pthread -lsamplerate -lX11 -lXext -lXcursor -lXi -lXfixes -lXrandr -lXss -ldrm -lgbm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -ldecor-0 -lpthread
 endif
 
 # Source and object files
@@ -59,7 +59,7 @@ all: clean lib app
 debug: clean lib app
 
 # Release build target
-release: clean lib app
+release: clean lib app run
 
 # Build the library
 lib: $(LIBRARY)
@@ -88,6 +88,7 @@ run: app
 external:
     git clone --depth=1 --branch release-2.30.9 https://github.com/libsdl-org/SDL.git external/SDL2 && \
     cd external/SDL2 && \
+    mkdir build && cd build && \
     cmake .. -DCMAKE_BUILD_TYPE=Release && \
     cmake --build . --config Release && \
     cd ../../..
