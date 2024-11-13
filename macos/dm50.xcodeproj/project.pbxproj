@@ -26,7 +26,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3B8455CB2CDE86AB00813F12 /* dm50.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dm50.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B8455CB2CDE86AB00813F12 /* macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B8455E12CDE879000813F12 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,7 +76,7 @@
 		3B8455CC2CDE86AB00813F12 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3B8455CB2CDE86AB00813F12 /* dm50.app */,
+				3B8455CB2CDE86AB00813F12 /* macOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,9 +92,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3B8455CA2CDE86AB00813F12 /* dm50 */ = {
+		3B8455CA2CDE86AB00813F12 /* macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3B8455DB2CDE86B000813F12 /* Build configuration list for PBXNativeTarget "dm50" */;
+			buildConfigurationList = 3B8455DB2CDE86B000813F12 /* Build configuration list for PBXNativeTarget "macOS" */;
 			buildPhases = (
 				3B8455C72CDE86AB00813F12 /* Sources */,
 				3B8455C82CDE86AB00813F12 /* Frameworks */,
@@ -110,11 +110,11 @@
 				3B8456292CDE890A00813F12 /* Headers */,
 				3B84562C2CDE896D00813F12 /* src */,
 			);
-			name = dm50;
+			name = macOS;
 			packageProductDependencies = (
 			);
 			productName = macos;
-			productReference = 3B8455CB2CDE86AB00813F12 /* dm50.app */;
+			productReference = 3B8455CB2CDE86AB00813F12 /* macOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -145,7 +145,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3B8455CA2CDE86AB00813F12 /* dm50 */,
+				3B8455CA2CDE86AB00813F12 /* macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -362,7 +362,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3B8455DB2CDE86B000813F12 /* Build configuration list for PBXNativeTarget "dm50" */ = {
+		3B8455DB2CDE86B000813F12 /* Build configuration list for PBXNativeTarget "macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3B8455DC2CDE86B000813F12 /* Debug */,

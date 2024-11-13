@@ -14,10 +14,20 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>dm50.xcscheme_^#shared#^_</key>
+		<key>iOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>macOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>macos copy.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>macos.xcscheme_^#shared#^_</key>
 		<dict>
@@ -28,6 +38,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>3B8455CA2CDE86AB00813F12</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3BDAE7712CE0B6EB002735D4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

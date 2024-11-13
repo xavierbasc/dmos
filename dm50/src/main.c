@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include "dm50_skin.h"
+#include "fonts.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
@@ -12,8 +13,8 @@
 #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 
 // Define screen dimensions
-#define SCREEN_WIDTH     70
-#define SCREEN_HEIGHT   150
+#define SCREEN_WIDTH    66 //70
+#define SCREEN_HEIGHT  142 //150
 
 SDL_Texture* load_png_from_memory(const unsigned char* data, int size, SDL_Renderer* renderer) {
     int width, height, channels;
@@ -127,7 +128,7 @@ int main(int argc, char* argv[])
     {
         // Create renderer
         SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-        SDL_RenderSetLogicalSize(renderer, 70, 150);
+        SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
         SDL_RenderSetIntegerScale(renderer, SDL_TRUE);
 
         /*
@@ -169,7 +170,6 @@ int main(int argc, char* argv[])
             squareRect.x = 50;
             squareRect.y = 50;
 
-
             // Event loop exit flag
             bool quit = false;
 
@@ -187,21 +187,22 @@ int main(int argc, char* argv[])
                     quit = true;
                 }
 
-                // Initialize renderer color white for the background
-                SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-
-                // Clear screen
-                SDL_RenderClear(renderer);
-
-                // Set renderer color red to draw the square
-                SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
-
-                // Draw filled square
-                SDL_RenderFillRect(renderer, &squareRect);
-
-                SDL_RenderCopy(renderer, texture, NULL, NULL);
                 
-                // Update screen
+                SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF); // White
+                SDL_RenderClear(renderer); // Clear screen
+                SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF); // Red
+
+                //SDL_RenderFillRect(renderer, &squareRect); // Draw filled square
+                //SDL_RenderCopy(renderer, texture, NULL, NULL);
+                
+                SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF); // White
+                draw_text(renderer, "0123456789", 1, 1);
+                draw_text(renderer, "ABC", 1, 8);
+
+                SDL_RenderDrawPoint(renderer, 0, 30);
+                SDL_RenderDrawPoint(renderer, SCREEN_WIDTH-1, 30);
+
+                // Draw text
                 SDL_RenderPresent(renderer);
             }
 
