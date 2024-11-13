@@ -5,8 +5,8 @@
 //  Created by Javier Bascones on 13/11/24.
 //
 
-#ifndef FONT_H
-#define FONT_H
+#ifndef FONTS_H
+#define FONTS_H
 
 #include <SDL2/SDL.h>
 

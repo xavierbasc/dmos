@@ -3,12 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>files</key>
-	<dict>
-		<key>Resources/Assets.car</key>
-		<data>
-		eKJpu9/GQVNiG6nxW65IXtET2r4=
-		</data>
-	</dict>
+	<dict/>
 	<key>files2</key>
 	<dict>
 		<key>Frameworks/SDL2.framework</key>
@@ -19,13 +14,6 @@
 			</data>
 			<key>requirement</key>
 			<string>identifier "org.libsdl.SDL2" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: Javier Bascones (4M8LRGK2W4)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
-		</dict>
-		<key>Resources/Assets.car</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			gciGYh/hPP712nOZ9ajO7p7V7r9IIaFOpTYSKpSBdMM=
-			</data>
 		</dict>
 	</dict>
 	<key>rules</key>

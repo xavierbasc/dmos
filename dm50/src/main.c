@@ -13,8 +13,8 @@
 #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 
 // Define screen dimensions
-#define SCREEN_WIDTH    66 //70
-#define SCREEN_HEIGHT  142 //150
+#define SCREEN_WIDTH   130 //70
+#define SCREEN_HEIGHT  278 //150
 
 SDL_Texture* load_png_from_memory(const unsigned char* data, int size, SDL_Renderer* renderer) {
     int width, height, channels;
@@ -163,12 +163,12 @@ int main(int argc, char* argv[])
             SDL_Rect squareRect;
 
             // Square dimensions: Half of the min(SCREEN_WIDTH, SCREEN_HEIGHT)
-            squareRect.w = 30;
-            squareRect.h = 30;
+            squareRect.w = 128;
+            squareRect.h = 64;
 
             // Square position: In the middle of the screen
-            squareRect.x = 50;
-            squareRect.y = 50;
+            squareRect.x = 1;
+            squareRect.y = 1;
 
             // Event loop exit flag
             bool quit = false;
@@ -192,15 +192,18 @@ int main(int argc, char* argv[])
                 SDL_RenderClear(renderer); // Clear screen
                 SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF); // Red
 
-                //SDL_RenderFillRect(renderer, &squareRect); // Draw filled square
-                //SDL_RenderCopy(renderer, texture, NULL, NULL);
+                SDL_RenderCopy(renderer, texture, NULL, NULL);
                 
-                SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF); // White
-                draw_text(renderer, "0123456789", 1, 1);
-                draw_text(renderer, "ABC", 1, 8);
+                SDL_SetRenderDrawColor(renderer, 196, 191, 185, 0xFF); // white
+                SDL_RenderFillRect(renderer, &squareRect); // display zone
 
-                SDL_RenderDrawPoint(renderer, 0, 30);
-                SDL_RenderDrawPoint(renderer, SCREEN_WIDTH-1, 30);
+                SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF); // White
+                draw_text(renderer, ">01234567890123456789", 1, 1);
+                draw_text(renderer, ">ABCZabcz", 1, 7);
+                draw_text(renderer, "Hello World", 25, 30);
+
+                //SDL_RenderDrawPoint(renderer, 0, 30);
+                //SDL_RenderDrawPoint(renderer, SCREEN_WIDTH-1, 30);
 
                 // Draw text
                 SDL_RenderPresent(renderer);
