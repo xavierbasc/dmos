@@ -37,3 +37,12 @@ make
 ```shell
 xxd -i dm50_skin.png > dm50_skin.h
 ```
+
+
+## "ldd" Utility - List Dynamic-Link Libraries
+
+The utility "ldd" examines dm50 executable and displays a list of the shared libraries:
+
+```shell
+ldd ./dm50/bin/linux/dm50
+```
