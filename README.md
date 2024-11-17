@@ -73,4 +73,4 @@ The utility "ldd" examines dm50 executable and displays a list of the shared lib
 ```shell
 ldd ./dm50/bin/linux/dm50
 ```
->>>>>>> 55d1067e3d41f721b325b3fc1882dd3a09d1fee9
+
