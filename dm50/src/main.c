@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#include <SDL2/SDL.h>
+#include "SDL.h"
 #include "dm50_skin.h"
 #include "fonts.h"
 
@@ -16,7 +16,7 @@
 #define SCREEN_WIDTH   130 //70
 #define SCREEN_HEIGHT  278 //150
 
-SDL_Texture* load_png_from_memory(const unsigned char* data, int size, SDL_Renderer* renderer) {
+SDL_Texture* load_img_from_memory(const unsigned char* data, int size, SDL_Renderer* renderer) {
     int width, height, channels;
     
     // Cargar la imagen desde la memoria con stb_image
@@ -43,11 +43,11 @@ SDL_Texture* load_png_from_memory(const unsigned char* data, int size, SDL_Rende
     return texture;
 }
 
-SDL_Texture* load_png(const char* filename, SDL_Renderer* renderer) {
+SDL_Texture* load_img(const char* filename, SDL_Renderer* renderer) {
     int width, height, channels;
     unsigned char *data = stbi_load(filename, &width, &height, &channels, 0);
     if (data == NULL) {
-        fprintf(stderr, "Error loading PNG image: %s\n", filename);
+        fprintf(stderr, "Error loading image: %s\n", filename);
         return NULL;
     }
 
@@ -89,6 +89,7 @@ int main(int argc, char* argv[])
         SDL_Quit();
         return 1;
     }
+    
     int screenWidth = displayMode.w;
     int screenHeight = displayMode.h;
 
@@ -118,7 +119,7 @@ int main(int argc, char* argv[])
                                           SDL_WINDOWPOS_UNDEFINED,
                                           SDL_WINDOWPOS_UNDEFINED,
                                           windowWidth, windowHeight,
-                                          SDL_WINDOW_SHOWN);
+                                          SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI);
     if(!window)
     {
         printf("Window could not be created!\n"
@@ -126,8 +127,10 @@ int main(int argc, char* argv[])
     }
     else
     {
-        // Create renderer
         SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+        SDL_GetWindowSize(window, &screenWidth, &screenHeight);
+        
         SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
         SDL_RenderSetIntegerScale(renderer, SDL_TRUE);
 
@@ -142,7 +145,8 @@ int main(int argc, char* argv[])
         }
         */
 
-        SDL_Texture* texture = load_png_from_memory(dm50_skin_png, dm50_skin_png_len, renderer);
+        SDL_Texture* texture = load_img_from_memory(dm50_skin_gif, dm50_skin_gif_len, renderer);
+
         if (!texture) {
             fprintf(stderr, "Error loading PNG texture from memory.\n");
             SDL_DestroyRenderer(renderer);

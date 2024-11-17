@@ -86,8 +86,11 @@ run: app
 	$(EXECUTABLE)
 
 external:
-    git clone --depth=1 --branch release-2.30.9 https://github.com/libsdl-org/SDL.git external/SDL2 && \
+	@echo "SDL2 downloading..."
+    @git clone --depth=1 --branch release-2.30.9 https://github.com/libsdl-org/SDL.git external/SDL2 && \
     cd external/SDL2 && \
     cmake .. -DCMAKE_BUILD_TYPE=Release && \
     cmake --build . --config Release && \
     cd ../../..
+
+.PHONY: external
