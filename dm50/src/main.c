@@ -115,7 +115,7 @@ int main(int argc, char* argv[])
 #endif
 
     // Create window
-    SDL_Window *window = SDL_CreateWindow("DM50 Calculator",
+    SDL_Window *window = SDL_CreateWindow("DM50",
                                           SDL_WINDOWPOS_UNDEFINED,
                                           SDL_WINDOWPOS_UNDEFINED,
                                           windowWidth, windowHeight,

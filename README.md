@@ -38,6 +38,7 @@ make
 xxd -i dm50_skin.png > dm50_skin.h
 ```
 
+<<<<<<< HEAD
 # Windows, MacOS and Linux
 
 ## Skins
@@ -63,3 +64,13 @@ layout file:
   x1,y1: top_left x2,y2: bottom_right colors: RRGGBB
 
 They will immediately appear in the Skins menu.
+=======
+
+## "ldd" Utility - List Dynamic-Link Libraries
+
+The utility "ldd" examines dm50 executable and displays a list of the shared libraries:
+
+```shell
+ldd ./dm50/bin/linux/dm50
+```
+>>>>>>> 55d1067e3d41f721b325b3fc1882dd3a09d1fee9
