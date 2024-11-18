@@ -92,6 +92,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3BA241AB2CEBD357006E6D5D /* DM50-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "DM50-Info.plist"; sourceTree = "<group>"; };
+		3BA241AC2CEBD39B006E6D5D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		3BE9444E2CEA678400FCEEE7 /* SDL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDL.xcodeproj; path = ../external/SDL2/Xcode/SDL/SDL.xcodeproj; sourceTree = "<group>"; };
 		3BE944CD2CEA680300FCEEE7 /* DM50.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DM50.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C17D9F28E437C300E1A26D /* config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = config.xcconfig; sourceTree = "<group>"; };
@@ -125,6 +127,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				3BA241AC2CEBD39B006E6D5D /* Launch Screen.storyboard */,
+				3BA241AB2CEBD357006E6D5D /* DM50-Info.plist */,
 				F3C17D9F28E437C300E1A26D /* config.xcconfig */,
 				3BE944DB2CEA684000FCEEE7 /* src */,
 				3BE9444E2CEA678400FCEEE7 /* SDL.xcodeproj */,
@@ -198,6 +202,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0630;
+				TargetAttributes = {
+					3BE944C12CEA680300FCEEE7 = {
+						LastSwiftMigration = 1610;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DM50" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -330,20 +339,49 @@
 		3BE944CB2CEA680300FCEEE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 38D72N7XSL;
+				INFOPLIST_FILE = "DM50-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Lauch Screen";
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				PRODUCT_BUNDLE_IDENTIFIER = org.DM50;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "DM50-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		3BE944CC2CEA680300FCEEE7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 38D72N7XSL;
+				INFOPLIST_FILE = "DM50-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Lauch Screen";
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				PRODUCT_BUNDLE_IDENTIFIER = org.DM50;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "DM50-Bridging-Header.h";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
