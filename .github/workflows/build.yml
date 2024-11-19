@@ -17,16 +17,9 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
-      - name: Clone SDL2
-        run: git clone --depth 1 --branch release-$SDL2_VERSION https://github.com/libsdl-org/SDL.git
+      - name: External
+        run: make external
 
-      - name: Build SDL2
-        run: |
-          cd SDL
-          cmake -B build -G Ninja . -DCMAKE_BUILD_TYPE=Release
-          ninja -C build
-          cd ..
-        
       - name: Build for macOS
         run: make PLATFORM=macos
       
