@@ -36,12 +36,6 @@
 			path = macos;
 			sourceTree = "<group>";
 		};
-		3B8456292CDE890A00813F12 /* Headers */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			name = Headers;
-			path = /Library/Frameworks/SDL2.framework/Headers;
-			sourceTree = "<absolute>";
-		};
 		3B84562C2CDE896D00813F12 /* src */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			name = src;
@@ -66,7 +60,6 @@
 			isa = PBXGroup;
 			children = (
 				3B84562C2CDE896D00813F12 /* src */,
-				3B8456292CDE890A00813F12 /* Headers */,
 				3B8455CD2CDE86AB00813F12 /* macos */,
 				3B8455E02CDE879000813F12 /* Frameworks */,
 				3B8455CC2CDE86AB00813F12 /* Products */,
@@ -107,7 +100,6 @@
 			);
 			fileSystemSynchronizedGroups = (
 				3B8455CD2CDE86AB00813F12 /* macos */,
-				3B8456292CDE890A00813F12 /* Headers */,
 				3B84562C2CDE896D00813F12 /* src */,
 			);
 			name = macOS;
@@ -306,6 +298,7 @@
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = /Library/Frameworks/SDL2.framework/Headers;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -338,6 +331,7 @@
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = /Library/Frameworks/SDL2.framework/Headers;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
