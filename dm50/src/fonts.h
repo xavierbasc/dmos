@@ -8,7 +8,7 @@
 #ifndef FONTS_H
 #define FONTS_H
 
-#include <SDL2/SDL.h>
+#include "SDL.h"
 
 void initFonts(void);
 void draw_character(SDL_Renderer* renderer, unsigned char* character, int x, int y);

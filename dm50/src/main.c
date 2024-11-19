@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include <SDL2/SDL.h>
+#include "SDL.h"
 #include "dm50_skin.h"
 #include "fonts.h"
 
