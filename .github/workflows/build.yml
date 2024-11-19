@@ -1,0 +1,64 @@
+name: Build on Tag
+
+on:
+  push:
+    tags:
+      - '*'  # only tags
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        
+      - name: Install SDL2
+        run: brew install sdl2
+        
+      - name: Build for macOS
+        run: make PLATFORM=macos
+      
+      - name: Create macOS installer
+        run: make install-macos PLATFORM=macos
+      
+      - name: Upload macOS artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos-installer
+          path: build/*.dmg
+
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Install SDL2
+        run: sudo apt-get update && sudo apt-get install -y libsdl2-dev
+
+      - name: Build for Linux
+        run: make PLATFORM=linux
+
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-binary
+          path: build/bin/*
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        
+      - name: Install SDL2
+        run: choco install sdl2
+        
+      - name: Build for Windows
+        run: make PLATFORM=windows
+        
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-binary
+          path: build/bin/*.exe
