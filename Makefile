@@ -1,97 +1,63 @@
-.PHONY: all clean debug release run external lib app
+# Variables generales
+APP_NAME := dm50
+SRC_DIR := dm50/src
+BUILD_DIR := build
+OBJ_DIR := $(BUILD_DIR)/obj
+BIN_DIR := $(BUILD_DIR)/bin
 
-CC = gcc
-PLATFORM ?= linux
-BUILD_TYPE ?= release
+SRC := $(wildcard $(SRC_DIR)/*.c)
+OBJ := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
-# Library and executable names
-LIB_NAME = dmos
-EXEC_NAME = dm50
+XCODE_BUILD_DIR := $(BUILD_DIR)/macos
 
-# Directories
-LIB_DIR = dmos
-LIB_SRC = $(LIB_DIR)/src
-LIB_INCLUDE = $(LIB_DIR)/include
-LIB_OUT_DIR = $(LIB_DIR)/lib
+CC := gcc
+CFLAGS := -Wall -g -O2
+LDFLAGS := Wl,-Bstatic -lSDL2 -Wl,-Bdynamic
+PLATFORM := native
 
-APP_DIR = dm50
-APP_SRC = $(APP_DIR)/src
-APP_INCLUDE = $(APP_DIR)/include/
-BIN_DIR = $(APP_DIR)/bin
+# Definiciones específicas de plataforma
+ifeq ($(PLATFORM), macos)
+    BUILD_CMD := xcodebuild -project macos/dm50.xcodeproj -scheme macOS -configuration Release -derivedDataPath $(XCODE_BUILD_DIR)
+    MAKE_INSTALLER_CMD := pkgbuild --min-os-version 13.5 --root $(XCODE_BUILD_DIR)/Build/Products/Release --identifier "dm50.macos" --version 1.0 build/DM50.pkg
+else ifeq ($(PLATFORM), linux)
+    CC := gcc
+    CFLAGS += -lSDL2
+else ifeq ($(PLATFORM), windows)
+    CC := x86_64-w64-mingw32-gcc
+    CFLAGS += -lmingw32 -lSDL2main -lSDL2
+    BIN_EXT := .exe
+else ifeq ($(PLATFORM), stm32)
+    CC := arm-none-eabi-gcc
+    CFLAGS := -mcpu=cortex-m4 -mthumb -g -Os -ffunction-sections -fdata-sections
+    LDFLAGS := -T stm32.ld -nostartfiles -Wl,--gc-sections
+else ifeq ($(PLATFORM), ios)
+    CC := clang
+    CFLAGS := -isysroot $(shell xcrun --sdk iphoneos --show-sdk-path) -arch arm64 -fobjc-arc
+    LDFLAGS := -framework SDL2 -framework UIKit
+else ifeq ($(PLATFORM), android)
+    CC := $(NDK_PATH)/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
+    CFLAGS := -target aarch64-linux-android21 -fPIE
+    LDFLAGS := -llog -landroid
+endif
 
-# Configuración de SDL2 según el sistema operativo
-ifeq ($(PLATFORM),macos)
-    # Enlazar con SDL2 desde el sistema en macOS
-    SDL2_LIB = -F/Library/Frameworks
-    SDL2_INCLUDE = /Library/Frameworks/SDL2.framework/Headers
-    LDFLAGS_SDL = -framework SDL2
-else ifeq ($(PLATFORM),windows)
-    # Ejemplo: Ruta SDL2 en Windows (ajustar según configuración)
-    SDL2_LIB = -lSDL2
-    SDL2_INCLUDE = C:/path/to/SDL2/include
-    LDFLAGS_SDL = -L/path/to/SDL2/lib -lSDL2
+all: build
+
+build:
+ifeq ($(PLATFORM), macos)
+	$(BUILD_CMD)
 else
-    # Configuración por defecto para Linux
-    SDL2_LIB = external/SDL2/build
-    LDFLAGS_SDL = -I$(SDL2_INCLUDE) Wl,-Bstatic -lSDL2 -Wl,-Bdynamic -lm -lasound -lm -ldl -lpthread -lpulse -pthread -lsamplerate -lX11 -lXext -lXcursor -lXi -lXfixes -lXrandr -lXss -ldrm -lgbm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -ldecor-0 -lpthread
+	$(CC) $(CFLAGS) -o $(BIN_DIR)/$(APP_NAME) src/main.c
 endif
 
-# Source and object files
-LIB_SRCS = $(wildcard $(LIB_SRC)/*.c) $(wildcard $(LIB_SRC)/$(PLATFORM)/*.c)
-APP_SRCS = $(wildcard $(APP_SRC)/*.c) $(wildcard $(APP_SRC)/$(PLATFORM)/*.c)
-APP_OBJS = $(APP_SRCS:.c=.o)
-LIB_OBJS = $(LIB_SRCS:.c=.o)
+install-macos: build
+	@echo "DMG ..."
+	create-dmg --app-drop-link 50 50 build/dm50.dmg build/macos/Build/Products/Release/macOS.app
 
-LDFLAGS = -L$(LIB_OUT_DIR) -ldmos -L$(SDL2_LIB) $(LDFLAGS_SDL) 
-LIBRARY = $(LIB_OUT_DIR)/lib$(LIB_NAME).a
-EXECUTABLE = $(BIN_DIR)/$(PLATFORM)/$(EXEC_NAME)
-
-ifeq ($(BUILD_TYPE),debug)
-    CFLAGS += -g -Wall
-else ifeq ($(BUILD_TYPE),release)
-    CFLAGS += -O2 -Wall
-endif
-
-# Default target: builds both library and application in debug mode
-all: clean lib app
-
-# Debug build target
-debug: clean lib app
-
-# Release build target
-release: clean lib app run
-
-# Build the library
-lib: $(LIBRARY)
-
-$(LIBRARY): $(LIB_OBJS) | $(LIB_OUT_DIR)
-	ar rcs $@ $(LIB_OBJS)
-
-# Build the application
-app: $(EXECUTABLE)
-
-$(EXECUTABLE): $(APP_OBJS) $(LIBRARY) | $(BIN_DIR)
-	$(CC) $(APP_OBJS) -o $@ $(LDFLAGS)
-
-# Create output directories if they don't exist
-$(LIB_OUT_DIR) $(BIN_DIR):
-	mkdir -p $@
-
-# Clean up object files and output
 clean:
-	rm -f $(LIB_OBJS) $(APP_OBJS) $(LIBRARY) $(EXECUTABLE)
+ifeq ($(PLATFORM), macos)
+	rm -rf $(XCODE_BUILD_DIR)
+else
+	rm -rf $(BUILD_DIR)
+endif
 
-# Run the application
-run: app
-	$(EXECUTABLE)
-
-external:
-	@echo "SDL2 downloading..."
-    @git clone --depth=1 --branch release-2.30.9 https://github.com/libsdl-org/SDL.git external/SDL2 && \
-    cd external/SDL2 && \
-    mkdir build && cd build && \
-    cmake .. -DCMAKE_BUILD_TYPE=Release && \
-    cmake --build . --config Release && \
-    cd ../../..
-
-.PHONY: external
+.PHONY: all build clean install-macos

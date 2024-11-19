@@ -6,6 +6,7 @@
 - make
 - cmake
 - git
+- create-dmg (macos: brew install create-dmg)
 
 # Download repository
 
@@ -29,6 +30,11 @@ make external
 make
 ```
 
+```shell
+make PLATFORM=macos
+```
+
+
 
 # Tools
 
@@ -38,7 +44,6 @@ make
 xxd -i dm50_skin.png > dm50_skin.h
 ```
 
-<<<<<<< HEAD
 # Windows, MacOS and Linux
 
 ## Skins
@@ -64,7 +69,6 @@ layout file:
   x1,y1: top_left x2,y2: bottom_right colors: RRGGBB
 
 They will immediately appear in the Skins menu.
-=======
 
 ## "ldd" Utility - List Dynamic-Link Libraries
 
