@@ -67,6 +67,10 @@ external:
     mkdir build && cd build && \
     cmake .. -DCMAKE_BUILD_TYPE=Release && \
     cmake --build . --config Release && \
+    cmake .. -G "Xcode" -DSDL_FRAMEWORK=ON -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" -DCMAKE_BUILD_TYPE=Release \
     cd ../../..
+
+
+
 
 .PHONY: all build clean install-macos
