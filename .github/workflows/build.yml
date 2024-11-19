@@ -9,6 +9,11 @@ jobs:
   build-macos:
     runs-on: macos-latest
     steps:
+      - name: Set up Xcode
+        uses: macos-latest/setup-xcode@v1
+        with:
+          xcode-version: '15.4'
+
       - name: Check out repository
         uses: actions/checkout@v3
         
