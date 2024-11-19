@@ -293,12 +293,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 38D72N7XSL;
 				ENABLE_HARDENED_RUNTIME = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(LOCAL_LIBRARY_DIR)/Frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/Frameworks/**";
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = /Library/Frameworks/SDL2.framework/Headers;
+				HEADER_SEARCH_PATHS = "/Library/Frameworks/SDL2.framework/Headers/**";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -326,12 +323,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(LOCAL_LIBRARY_DIR)/Frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/Frameworks/**";
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = /Library/Frameworks/SDL2.framework/Headers;
+				HEADER_SEARCH_PATHS = "/Library/Frameworks/SDL2.framework/Headers/**";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
