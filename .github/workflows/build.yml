@@ -34,7 +34,10 @@ jobs:
 
       - name: Build for macOS
         run: make PLATFORM=macos
-      
+
+      - name: create-dmg
+        run: brew install create-dmg
+
       - name: Create macOS installer
         run: make install-macos PLATFORM=macos
       
