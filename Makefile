@@ -17,7 +17,7 @@ PLATFORM := native
 
 # Definiciones específicas de plataforma
 ifeq ($(PLATFORM), macos)
-    BUILD_CMD := xcodebuild -project macos/dm50.xcodeproj -scheme macOS -configuration Release -derivedDataPath $(XCODE_BUILD_DIR)
+    BUILD_CMD := xcodebuild -project macos/dm50.xcodeproj -scheme macOS -configuration Release -derivedDataPath build/macos
     MAKE_INSTALLER_CMD := pkgbuild --min-os-version 13.5 --root $(XCODE_BUILD_DIR)/Build/Products/Release --identifier "dm50.macos" --version 1.0 build/DM50.pkg
 else ifeq ($(PLATFORM), linux)
     CC := gcc
@@ -64,12 +64,9 @@ external:
 	@echo "SDL2 downloading..."
     @git clone --depth=1 --branch release-2.30.9 https://github.com/libsdl-org/SDL.git external/SDL2 && \
     cd external/SDL2 && \
-    mkdir build && cd build && \
-    cmake .. -DCMAKE_BUILD_TYPE=Release && \
-    cmake --build . --config Release && \
-    cmake .. -DSDL_FRAMEWORK=ON -DCMAKE_SYSTEM_NAME=Darwin -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_OSX_DEPLOYMENT_TARGET=10.11 \
-    cmake --build . --config Release && \
+    ./configure --disable-shared --enable-static && \
+    make && \
+    cp build/.libs/libSDL2.a build/libSDL2.a && \
     cd ../../..
-
 
 .PHONY: all build clean install-macos

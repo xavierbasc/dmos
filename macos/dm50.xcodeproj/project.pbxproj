@@ -7,8 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3BFA149D2CED4AC900EE613F /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA149C2CED4AC900EE613F /* SDL2.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		3BFA149E2CED4AF300EE613F /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA149C2CED4AC900EE613F /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3BFA69DC2CEE6A370003AC2F /* libm.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69DB2CEE6A370003AC2F /* libm.tbd */; };
+		3BFA69DE2CEE6A3D0003AC2F /* libpthread.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69DD2CEE6A3D0003AC2F /* libpthread.tbd */; };
+		3BFA69E02CEE6A440003AC2F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69DF2CEE6A440003AC2F /* CoreVideo.framework */; };
+		3BFA69E22CEE6A490003AC2F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69E12CEE6A490003AC2F /* Cocoa.framework */; };
+		3BFA69E42CEE6A500003AC2F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69E32CEE6A500003AC2F /* IOKit.framework */; };
+		3BFA69E62CEE6A570003AC2F /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69E52CEE6A570003AC2F /* Carbon.framework */; };
+		3BFA69E82CEE6A5C0003AC2F /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69E72CEE6A5C0003AC2F /* CoreAudio.framework */; };
+		3BFA69EA2CEE6CB00003AC2F /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69E92CEE6CB00003AC2F /* libSDL2.a */; };
+		3BFA69ED2CEE6E8E0003AC2F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69EC2CEE6E8E0003AC2F /* AudioToolbox.framework */; };
+		3BFA69EF2CEE6EAA0003AC2F /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69EE2CEE6EAA0003AC2F /* CoreHaptics.framework */; };
+		3BFA69F12CEE6EBB0003AC2F /* ForceFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69F02CEE6EBB0003AC2F /* ForceFeedback.framework */; };
+		3BFA69F32CEE6ED20003AC2F /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69F22CEE6ED20003AC2F /* GameController.framework */; };
+		3BFA69F52CEE6EE50003AC2F /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69F42CEE6EE50003AC2F /* Metal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -18,7 +29,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3BFA149E2CED4AF300EE613F /* SDL2.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -27,7 +37,19 @@
 
 /* Begin PBXFileReference section */
 		3B8455CB2CDE86AB00813F12 /* macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BFA149C2CED4AC900EE613F /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2.framework; sourceTree = "<group>"; };
+		3BFA69DB2CEE6A370003AC2F /* libm.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libm.tbd; path = usr/lib/libm.tbd; sourceTree = SDKROOT; };
+		3BFA69DD2CEE6A3D0003AC2F /* libpthread.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libpthread.tbd; path = usr/lib/libpthread.tbd; sourceTree = SDKROOT; };
+		3BFA69DF2CEE6A440003AC2F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		3BFA69E12CEE6A490003AC2F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		3BFA69E32CEE6A500003AC2F /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		3BFA69E52CEE6A570003AC2F /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		3BFA69E72CEE6A5C0003AC2F /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		3BFA69E92CEE6CB00003AC2F /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../external/SDL2/build/libSDL2.a; sourceTree = "<group>"; };
+		3BFA69EC2CEE6E8E0003AC2F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		3BFA69EE2CEE6EAA0003AC2F /* CoreHaptics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreHaptics.framework; path = System/Library/Frameworks/CoreHaptics.framework; sourceTree = SDKROOT; };
+		3BFA69F02CEE6EBB0003AC2F /* ForceFeedback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ForceFeedback.framework; path = System/Library/Frameworks/ForceFeedback.framework; sourceTree = SDKROOT; };
+		3BFA69F22CEE6ED20003AC2F /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
+		3BFA69F42CEE6EE50003AC2F /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -49,7 +71,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BFA149D2CED4AC900EE613F /* SDL2.framework in Frameworks */,
+				3BFA69ED2CEE6E8E0003AC2F /* AudioToolbox.framework in Frameworks */,
+				3BFA69E62CEE6A570003AC2F /* Carbon.framework in Frameworks */,
+				3BFA69E22CEE6A490003AC2F /* Cocoa.framework in Frameworks */,
+				3BFA69E82CEE6A5C0003AC2F /* CoreAudio.framework in Frameworks */,
+				3BFA69EF2CEE6EAA0003AC2F /* CoreHaptics.framework in Frameworks */,
+				3BFA69E02CEE6A440003AC2F /* CoreVideo.framework in Frameworks */,
+				3BFA69F12CEE6EBB0003AC2F /* ForceFeedback.framework in Frameworks */,
+				3BFA69F32CEE6ED20003AC2F /* GameController.framework in Frameworks */,
+				3BFA69E42CEE6A500003AC2F /* IOKit.framework in Frameworks */,
+				3BFA69F52CEE6EE50003AC2F /* Metal.framework in Frameworks */,
+				3BFA69DE2CEE6A3D0003AC2F /* libpthread.tbd in Frameworks */,
+				3BFA69DC2CEE6A370003AC2F /* libm.tbd in Frameworks */,
+				3BFA69EA2CEE6CB00003AC2F /* libSDL2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +95,7 @@
 			children = (
 				3B84562C2CDE896D00813F12 /* src */,
 				3B8455CD2CDE86AB00813F12 /* macos */,
-				3B8455E02CDE879000813F12 /* Frameworks */,
+				3BFA69DA2CEE6A370003AC2F /* Frameworks */,
 				3B8455CC2CDE86AB00813F12 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,10 +108,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3B8455E02CDE879000813F12 /* Frameworks */ = {
+		3BFA69DA2CEE6A370003AC2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3BFA149C2CED4AC900EE613F /* SDL2.framework */,
+				3BFA69F42CEE6EE50003AC2F /* Metal.framework */,
+				3BFA69F22CEE6ED20003AC2F /* GameController.framework */,
+				3BFA69F02CEE6EBB0003AC2F /* ForceFeedback.framework */,
+				3BFA69EE2CEE6EAA0003AC2F /* CoreHaptics.framework */,
+				3BFA69EC2CEE6E8E0003AC2F /* AudioToolbox.framework */,
+				3BFA69E92CEE6CB00003AC2F /* libSDL2.a */,
+				3BFA69E72CEE6A5C0003AC2F /* CoreAudio.framework */,
+				3BFA69E52CEE6A570003AC2F /* Carbon.framework */,
+				3BFA69E32CEE6A500003AC2F /* IOKit.framework */,
+				3BFA69E12CEE6A490003AC2F /* Cocoa.framework */,
+				3BFA69DF2CEE6A440003AC2F /* CoreVideo.framework */,
+				3BFA69DD2CEE6A3D0003AC2F /* libpthread.tbd */,
+				3BFA69DB2CEE6A370003AC2F /* libm.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -299,7 +345,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = ./SDL2.framework/Headers;
+				HEADER_SEARCH_PATHS = ../external/SDL2/include;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -307,7 +353,10 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = ../external/SDL2/build;
 				MARKETING_VERSION = 1.0;
+				OTHER_CFLAGS = "-D_THREAD_SAFE";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = dm50.macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -331,7 +380,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = ./SDL2.framework/Headers;
+				HEADER_SEARCH_PATHS = ../external/SDL2/include;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -339,7 +388,10 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = ../external/SDL2/build;
 				MARKETING_VERSION = 1.0;
+				OTHER_CFLAGS = "-D_THREAD_SAFE";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = dm50.macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
