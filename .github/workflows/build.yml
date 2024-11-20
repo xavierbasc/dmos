@@ -17,18 +17,20 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
-      - name: SDL2 Framework
-        run: brew install sdl2
-
       - name: Clone SDL2
         run: git clone --depth=1 --branch release-2.30.9 https://github.com/libsdl-org/SDL.git external/SDL2
 
       - name: Build SDL2
         run: |
           cd external/SDL2
-          ./configure --disable-shared --enable-static
+          ./configure --enable-static --disable-shared --host=x86_64-apple-darwin --build=x86_64-apple-darwin
           make
-          cp build/.libs/libSDL2.a build/libSDL2.a
+          cp build/.libs/libSDL2.a build/libSDL2_x86_64.a
+          make clean
+          ./configure --enable-static --disable-shared --host=arm-apple-darwin --build=arm-apple-darwin
+          make
+          cp build/.libs/libSDL2.a build/libSDL2_arm.a
+          lipo -create build/libSDL2_x86_64.a build/libSDL2_x86_64.a -output build/libSDL2.a
           cd ../../..
 
       - name: Build for macOS

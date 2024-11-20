@@ -61,12 +61,19 @@ else
 endif
 
 external:
-	@echo "SDL2 downloading..."
+	@echo "SDL2 downloading..." && \
+    rm -rf external  && \
     git clone --depth=1 --branch release-2.30.9 https://github.com/libsdl-org/SDL.git external/SDL2 && \
     cd external/SDL2 && \
-    ./configure --disable-shared --enable-static && \
+    make clean && \
+    ./configure --enable-static --disable-shared --host=x86_64-apple-darwin --build=x86_64-apple-darwin && \
     make && \
-    cp build/.libs/libSDL2.a build/libSDL2.a && \
+    cp build/.libs/libSDL2.a build/libSDL2_x86_64.a && \
+    make clean && \
+    ./configure --enable-static --disable-shared --host=arm-apple-darwin --build=arm-apple-darwin && \
+    make && \
+    cp build/.libs/libSDL2.a build/libSDL2_arm.a && \
+    lipo -create build/libSDL2_x86_64.a build/libSDL2_x86_64.a -output build/libSDL2.a && \
     cd ../../..
 
-.PHONY: all build clean install-macos
+.PHONY: all build clean install-macos external
