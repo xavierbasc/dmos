@@ -48,6 +48,15 @@ jobs:
           name: "DM50 Installer for macOS"
           path: build/dm50.dmg
 
+      - name: Create a release
+        if: github.ref == 'refs/heads/main'
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: build/dm50.dmg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: "DM50 Installer for macOS"
+          tag: "v${{ github.run_number }}"
+
   build-linux:
     runs-on: ubuntu-latest
     steps:
