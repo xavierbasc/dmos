@@ -40,23 +40,29 @@ jobs:
 
       - name: Create macOS installer
         run: make install-macos PLATFORM=macos
-      
-      - name: Upload macOS artifact
-        uses: actions/upload-artifact@v3
-        with:
-          artifacts: build/dm50.dmg
-          name: "DM50 Installer for macOS"
-          path: build/dm50.dmg
 
-      - name: Create a release
-        if: github.ref == 'refs/heads/main'
-        uses: ncipollo/release-action@v1
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          artifacts: build/dm50.dmg
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: "DM50 Installer for macOS"
-          tag: "v${{ github.run_number }}"
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
 
+      - name: Upload Release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: build/dm50.dmg
+          asset_name: dm50.dmg
+          asset_content_type: application/octet-stream
+        
   build-linux:
     runs-on: ubuntu-latest
     steps:
