@@ -1,3 +1,5 @@
+SHELL := /bin/bash
+
 .PHONY: all clean debug release run external lib app
 
 CC = gcc
@@ -71,9 +73,9 @@ $(LIBRARY): $(LIB_OBJS) | $(LIB_OUT_DIR)
 	@echo LDFLAGS $(LDFLAGS)
 
 # Build the application
-app: $(EXECUTABLE)
+app: $(EXECUTABLE) 
 
-$(EXECUTABLE): $(APP_OBJS) $(LIBRARY) | $(BIN_DIR)
+$(EXECUTABLE): external $(APP_OBJS) $(LIBRARY) | $(BIN_DIR)
 	$(CC) $(CFLAGS) $(APP_OBJS) -o $@ $(LDFLAGS)
 
 # Create output directories if they don't exist
@@ -89,12 +91,16 @@ run: app
 	$(EXECUTABLE)
 
 external:
-	@echo "SDL2 downloading..."
-	@git clone --depth=1 --branch release-2.30.9 https://github.com/libsdl-org/SDL.git external/SDL2 && \
-    cd external/SDL2 && \
-    mkdir build && cd build && \
-    cmake .. -DCMAKE_BUILD_TYPE=Release && \
-    cmake --build . --config Release && \
-    cd ../../..
-
+	if [ -d "external" ]; then \
+		echo external exists; \
+	else \
+		echo "SDL2 downloading..."; \
+		git clone --depth=1 --branch release-2.30.9 https://github.com/libsdl-org/SDL.git external/SDL2 && \
+		cd external/SDL2 && \
+		mkdir build && cd build && \
+		cmake .. -DCMAKE_BUILD_TYPE=Release && \
+		cmake --build . --config Release && \
+		cd ../../..;\
+	fi\
+	
 .PHONY: external
