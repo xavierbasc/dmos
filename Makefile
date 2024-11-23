@@ -32,8 +32,9 @@ else ifeq ($(PLATFORM),windows)
     LDFLAGS_SDL = -L/path/to/SDL2/lib -lSDL2
 else
     # Configuración por defecto para Linux
-    SDL2_LIB = external/SDL2/build
-    LDFLAGS_SDL = -I$(SDL2_INCLUDE) Wl,-Bstatic -lSDL2 -Wl,-Bdynamic -lm -lasound -lm -ldl -lpthread -lpulse -pthread -lsamplerate -lX11 -lXext -lXcursor -lXi -lXfixes -lXrandr -lXss -ldrm -lgbm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -ldecor-0 -lpthread
+    SDL2_LIB = ./external/SDL2/build
+    SDL2_INCLUDE = ./external/SDL2/include/
+    LDFLAGS_SDL = -lSDL2 -Wl,-Bdynamic -lm -lasound -lm -ldl -lpthread -lpulse -pthread -lsamplerate -lX11 -lXext -lXcursor -lXi -lXfixes -lXrandr -lXss -ldrm -lgbm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -ldecor-0 -lpthread
 endif
 
 # Source and object files
@@ -47,10 +48,11 @@ LIBRARY = $(LIB_OUT_DIR)/lib$(LIB_NAME).a
 EXECUTABLE = $(BIN_DIR)/$(PLATFORM)/$(EXEC_NAME)
 
 ifeq ($(BUILD_TYPE),debug)
-    CFLAGS += -g -Wall
+    CFLAGS += -g -Wall -I$(SDL2_INCLUDE)
 else ifeq ($(BUILD_TYPE),release)
-    CFLAGS += -O2 -Wall
+    CFLAGS += -O2 -Wall -I$(SDL2_INCLUDE)
 endif
+
 
 # Default target: builds both library and application in debug mode
 all: clean lib app
@@ -66,12 +68,13 @@ lib: $(LIBRARY)
 
 $(LIBRARY): $(LIB_OBJS) | $(LIB_OUT_DIR)
 	ar rcs $@ $(LIB_OBJS)
+	@echo LDFLAGS $(LDFLAGS)
 
 # Build the application
 app: $(EXECUTABLE)
 
 $(EXECUTABLE): $(APP_OBJS) $(LIBRARY) | $(BIN_DIR)
-	$(CC) $(APP_OBJS) -o $@ $(LDFLAGS)
+	$(CC) $(CFLAGS) $(APP_OBJS) -o $@ $(LDFLAGS)
 
 # Create output directories if they don't exist
 $(LIB_OUT_DIR) $(BIN_DIR):
@@ -87,7 +90,7 @@ run: app
 
 external:
 	@echo "SDL2 downloading..."
-    @git clone --depth=1 --branch release-2.30.9 https://github.com/libsdl-org/SDL.git external/SDL2 && \
+	@git clone --depth=1 --branch release-2.30.9 https://github.com/libsdl-org/SDL.git external/SDL2 && \
     cd external/SDL2 && \
     mkdir build && cd build && \
     cmake .. -DCMAKE_BUILD_TYPE=Release && \
