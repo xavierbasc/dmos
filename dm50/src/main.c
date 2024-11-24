@@ -91,8 +91,8 @@ int main(int argc, char* argv[])
     int scaleX, scaleY;
     
     if (strcmp(SDL_GetPlatform(), "iOS") == 0) {
-        scaleX = screenWidth / SCREEN_WIDTH;
-        scaleY = screenHeight / SCREEN_HEIGHT;
+        //scaleX = screenWidth / SCREEN_WIDTH;
+        //scaleY = screenHeight / SCREEN_HEIGHT;
     } else {
         // Obtén el tamaño de la pantalla
         SDL_DisplayMode displayMode;
@@ -158,8 +158,8 @@ int main(int argc, char* argv[])
 
             // PIXEL PERFECT
             SDL_RenderSetIntegerScale(renderer, SDL_TRUE);
-            int scaleX = screenWidth / SCREEN_WIDTH;
-            int scaleY = screenHeight /SCREEN_HEIGHT;
+            scaleX = screenWidth / SCREEN_WIDTH;
+            scaleY = screenHeight /SCREEN_HEIGHT;
             SDL_RenderSetScale(renderer, scaleX, scaleX);
             SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH*scaleX, SCREEN_HEIGHT*scaleX);
 

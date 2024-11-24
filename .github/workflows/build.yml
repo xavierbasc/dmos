@@ -1,0 +1,86 @@
+name: Build on Tag
+
+on:
+  push:
+    tags:
+      - '*'  # only tags
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - name: Set up Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Clone SDL2
+        run: git clone --depth=1 --branch release-2.30.9 https://github.com/libsdl-org/SDL.git external/SDL2
+
+      - name: Build SDL2
+        run: |
+          cd external/SDL2
+          ./configure --enable-static --disable-shared --host=x86_64-apple-darwin --build=x86_64-apple-darwin
+          make
+          cp build/.libs/libSDL2.a build/libSDL2_x86_64.a
+          make clean
+          ./configure --enable-static --disable-shared --host=arm-apple-darwin --build=arm-apple-darwin
+          make
+          cp build/.libs/libSDL2.a build/libSDL2_arm.a
+          lipo -create build/libSDL2_x86_64.a build/libSDL2_x86_64.a -output build/libSDL2.a
+          cd ../../..
+
+      - name: Build for macOS
+        run: make PLATFORM=macos
+
+      - name: Install create-dmg
+        run: brew install create-dmg
+
+      - name: Create macOS installer
+        run: make install-macos PLATFORM=macos
+      
+      - name: Upload macOS artifact
+        uses: actions/upload-artifact@v3
+        with:
+          artifacts: build/dm50.dmg
+          name: "DM50 Installer for macOS"
+          path: build/dm50.dmg
+
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Install SDL2
+        run: sudo apt-get update && sudo apt-get install -y libsdl2-dev
+
+      - name: Build for Linux
+        run: make PLATFORM=linux
+
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-binary
+          path: build/bin/*
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        
+      - name: Install SDL2
+        run: choco install sdl2
+        
+      - name: Build for Windows
+        run: make PLATFORM=windows
+        
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-binary
+          path: build/bin/*.exe
