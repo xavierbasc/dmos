@@ -1,57 +1,81 @@
-# Variables generales
-APP_NAME := dm50
-SRC_DIR := dm50/src
-BUILD_DIR := build
-OBJ_DIR := $(BUILD_DIR)/obj
-BIN_DIR := $(BUILD_DIR)/bin
+SHELL := /bin/bash
 
-SRC := $(wildcard $(SRC_DIR)/*.c)
-OBJ := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
+.PHONY: all clean debug release run external lib app
 
-XCODE_BUILD_DIR := $(BUILD_DIR)/macos
+CC = gcc
+PLATFORM ?= linux
+BUILD_TYPE ?= release
 
-CC := gcc
-CFLAGS := -Wall -g -O2
-LDFLAGS := Wl,-Bstatic -lSDL2 -Wl,-Bdynamic
-PLATFORM := native
+# Library and executable names
+LIB_NAME = dmos
+EXEC_NAME = dm50
 
-# Definiciones específicas de plataforma
-ifeq ($(PLATFORM), macos)
-    BUILD_CMD := xcodebuild -project macos/dm50.xcodeproj -scheme macOS -configuration Release -derivedDataPath build/macos
-    MAKE_INSTALLER_CMD := pkgbuild --min-os-version 13.5 --root $(XCODE_BUILD_DIR)/Build/Products/Release --identifier "dm50.macos" --version 1.0 build/DM50.pkg
-else ifeq ($(PLATFORM), linux)
-    CC := gcc
-    CFLAGS += -lSDL2
-else ifeq ($(PLATFORM), windows)
-    CC := x86_64-w64-mingw32-gcc
-    CFLAGS += -lmingw32 -lSDL2main -lSDL2
-    BIN_EXT := .exe
-else ifeq ($(PLATFORM), stm32)
-    CC := arm-none-eabi-gcc
-    CFLAGS := -mcpu=cortex-m4 -mthumb -g -Os -ffunction-sections -fdata-sections
-    LDFLAGS := -T stm32.ld -nostartfiles -Wl,--gc-sections
-else ifeq ($(PLATFORM), ios)
-    CC := clang
-    CFLAGS := -isysroot $(shell xcrun --sdk iphoneos --show-sdk-path) -arch arm64 -fobjc-arc
-    LDFLAGS := -framework SDL2 -framework UIKit
-else ifeq ($(PLATFORM), android)
-    CC := $(NDK_PATH)/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
-    CFLAGS := -target aarch64-linux-android21 -fPIE
-    LDFLAGS := -llog -landroid
+# Directories
+LIB_DIR = dmos
+LIB_SRC = $(LIB_DIR)/src
+LIB_INCLUDE = $(LIB_DIR)/include
+LIB_OUT_DIR = $(LIB_DIR)/lib
+
+APP_DIR = dm50
+APP_SRC = $(APP_DIR)/src
+APP_INCLUDE = $(APP_DIR)/include/
+BIN_DIR = $(APP_DIR)/bin
+
+# Configuración de SDL2 según el sistema operativo
+ifeq ($(PLATFORM),macos)
+    # Enlazar con SDL2 desde el sistema en macOS
+    SDL2_LIB = -F/Library/Frameworks
+    SDL2_INCLUDE = /Library/Frameworks/SDL2.framework/Headers
+    LDFLAGS_SDL = -framework SDL2
+else ifeq ($(PLATFORM),windows)
+    # Ejemplo: Ruta SDL2 en Windows (ajustar según configuración)
+    SDL2_LIB = -lSDL2
+    SDL2_INCLUDE = C:/path/to/SDL2/include
+    LDFLAGS_SDL = -L/path/to/SDL2/lib -lSDL2
+else
+    # Configuración por defecto para Linux
+    SDL2_LIB = ./external/SDL2/build
+    SDL2_INCLUDE = ./external/SDL2/include/
+    LDFLAGS_SDL = -lSDL2 -Wl,-Bdynamic -lm -lasound -lm -ldl -lpthread -lpulse -pthread -lsamplerate -lX11 -lXext -lXcursor -lXi -lXfixes -lXrandr -lXss -ldrm -lgbm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -ldecor-0 -lpthread
+
 endif
 
 all: build
 
-build:
-ifeq ($(PLATFORM), macos)
-	$(BUILD_CMD)
-else
-	$(CC) $(CFLAGS) -o $(BIN_DIR)/$(APP_NAME) src/main.c
+ifeq ($(BUILD_TYPE),debug)
+    CFLAGS += -g -Wall -I$(SDL2_INCLUDE)
+else ifeq ($(BUILD_TYPE),release)
+    CFLAGS += -O2 -Wall -I$(SDL2_INCLUDE)
 endif
 
-install-macos: build
-	@echo "DMG ..."
-	create-dmg --app-drop-link 50 50 build/dm50.dmg build/macos/Build/Products/Release/macOS.app
+
+# Default target: builds both library and application in debug mode
+all: clean lib app
+
+# Debug build target
+debug: clean lib app
+
+# Release build target
+release: clean lib app run
+
+# Build the library
+lib: $(LIBRARY)
+
+$(LIBRARY): $(LIB_OBJS) | $(LIB_OUT_DIR)
+	ar rcs $@ $(LIB_OBJS)
+	@echo LDFLAGS $(LDFLAGS)
+
+# Build the application
+app: $(EXECUTABLE) 
+
+$(EXECUTABLE): external $(APP_OBJS) $(LIBRARY) | $(BIN_DIR)
+	$(CC) $(CFLAGS) $(APP_OBJS) -o $@ $(LDFLAGS)
+
+# Create output directories if they don't exist
+$(LIB_OUT_DIR) $(BIN_DIR):
+	mkdir -p $@
+
+# Clean up object files and output
 
 clean:
 ifeq ($(PLATFORM), macos)
@@ -61,19 +85,17 @@ else
 endif
 
 external:
-	@echo "SDL2 downloading..." && \
-    rm -rf external  && \
-    git clone --depth=1 --branch release-2.30.9 https://github.com/libsdl-org/SDL.git external/SDL2 && \
-    cd external/SDL2 && \
-    make clean && \
-    ./configure --enable-static --disable-shared --host=x86_64-apple-darwin --build=x86_64-apple-darwin && \
-    make && \
-    cp build/.libs/libSDL2.a build/libSDL2_x86_64.a && \
-    make clean && \
-    ./configure --enable-static --disable-shared --host=arm-apple-darwin --build=arm-apple-darwin && \
-    make && \
-    cp build/.libs/libSDL2.a build/libSDL2_arm.a && \
-    lipo -create build/libSDL2_x86_64.a build/libSDL2_x86_64.a -output build/libSDL2.a && \
-    cd ../../..
+	if [ -d "external" ]; then \
+		echo external exists; \
+	else \
+		echo "SDL2 downloading..."; \
+		git clone --depth=1 --branch release-2.30.9 https://github.com/libsdl-org/SDL.git external/SDL2 && \
+		cd external/SDL2 && \
+		mkdir build && cd build && \
+		cmake .. -DCMAKE_BUILD_TYPE=Release && \
+		cmake --build . --config Release && \
+		cd ../../..;\
+	fi\
+	
+.PHONY: external
 
-.PHONY: all build clean install-macos external
