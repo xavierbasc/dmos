@@ -7,6 +7,7 @@
 
 #include "fonts.h"
 #include "SDL.h"
+#include  <string.h>
 
 #define FONT_WIDTH   5
 #define FONT_HEIGHT  5

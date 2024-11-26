@@ -32,15 +32,14 @@ else ifeq ($(PLATFORM),windows)
     SDL2_LIB = -lSDL2
     SDL2_INCLUDE = C:/path/to/SDL2/include
     LDFLAGS_SDL = -L/path/to/SDL2/lib -lSDL2
-else
+else ifeq ($(PLATFORM),linux)
+    # Ejemplo: Ruta SDL2 en Windows (ajustar según configuración)
     # Configuración por defecto para Linux
     SDL2_LIB = ./external/SDL2/build
     SDL2_INCLUDE = ./external/SDL2/include/
     LDFLAGS_SDL = -lSDL2 -Wl,-Bdynamic -lm -lasound -lm -ldl -lpthread -lpulse -pthread -lsamplerate -lX11 -lXext -lXcursor -lXi -lXfixes -lXrandr -lXss -ldrm -lgbm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -ldecor-0 -lpthread
 
 endif
-
-all: build
 
 ifeq ($(BUILD_TYPE),debug)
     CFLAGS += -g -Wall -I$(SDL2_INCLUDE)
@@ -56,7 +55,7 @@ all: clean lib app
 debug: clean lib app
 
 # Release build target
-release: clean lib app run
+release: lib app run
 
 # Build the library
 lib: $(LIBRARY)
