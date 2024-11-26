@@ -79,8 +79,10 @@ $(LIB_OUT_DIR) $(BIN_DIR):
 clean:
 ifeq ($(PLATFORM), macos)
 	rm -rf $(XCODE_BUILD_DIR)
-else
-	rm -rf $(BUILD_DIR)
+else ifeq ($(PLATFORM), windows)
+	echo Not Implemented: Cleaning windows build directories
+else ifeq ($(PLATFORM), linux)
+	rm -f $(LIB_OBJS) $(APP_OBJS) $(LIBRARY) $(EXECUTABLE)
 endif
 
 external:
