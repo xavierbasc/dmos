@@ -37,10 +37,17 @@ else
     SDL2_LIB = ./external/SDL2/build
     SDL2_INCLUDE = ./external/SDL2/include/
     LDFLAGS_SDL = -lSDL2 -Wl,-Bdynamic -lm -lasound -lm -ldl -lpthread -lpulse -pthread -lsamplerate -lX11 -lXext -lXcursor -lXi -lXfixes -lXrandr -lXss -ldrm -lgbm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -ldecor-0 -lpthread
-
 endif
 
-all: build
+# Source and object files
+LIB_SRCS = $(wildcard $(LIB_SRC)/*.c) $(wildcard $(LIB_SRC)/$(PLATFORM)/*.c)
+APP_SRCS = $(wildcard $(APP_SRC)/*.c) $(wildcard $(APP_SRC)/$(PLATFORM)/*.c)
+APP_OBJS = $(APP_SRCS:.c=.o)
+LIB_OBJS = $(LIB_SRCS:.c=.o)
+
+LDFLAGS = -L$(LIB_OUT_DIR) -ldmos -L$(SDL2_LIB) $(LDFLAGS_SDL) 
+LIBRARY = $(LIB_OUT_DIR)/lib$(LIB_NAME).a
+EXECUTABLE = $(BIN_DIR)/$(PLATFORM)/$(EXEC_NAME)
 
 ifeq ($(BUILD_TYPE),debug)
     CFLAGS += -g -Wall -I$(SDL2_INCLUDE)
@@ -50,13 +57,13 @@ endif
 
 
 # Default target: builds both library and application in debug mode
-all: clean lib app
+all: lib app
 
 # Debug build target
-debug: clean lib app
+debug: lib app
 
 # Release build target
-release: clean lib app run
+release: lib app
 
 # Build the library
 lib: $(LIBRARY)
@@ -81,8 +88,11 @@ clean:
 ifeq ($(PLATFORM), macos)
 	rm -rf $(XCODE_BUILD_DIR)
 else
-	rm -rf $(BUILD_DIR)
+	rm -f $(LIB_OBJS) $(APP_OBJS) $(LIBRARY) $(EXECUTABLE)
 endif
+
+run: app
+	$(EXECUTABLE)
 
 external:
 	if [ -d "external" ]; then \
