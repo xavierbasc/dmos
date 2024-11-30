@@ -32,7 +32,8 @@ else ifeq ($(PLATFORM),windows)
     SDL2_LIB = -lSDL2
     SDL2_INCLUDE = C:/path/to/SDL2/include
     LDFLAGS_SDL = -L/path/to/SDL2/lib -lSDL2
-else
+else ifeq ($(PLATFORM),linux)
+    # Ejemplo: Ruta SDL2 en Windows (ajustar según configuración)
     # Configuración por defecto para Linux
     SDL2_LIB = ./external/SDL2/build
     SDL2_INCLUDE = ./external/SDL2/include/
@@ -87,7 +88,9 @@ $(LIB_OUT_DIR) $(BIN_DIR):
 clean:
 ifeq ($(PLATFORM), macos)
 	rm -rf $(XCODE_BUILD_DIR)
-else
+else ifeq ($(PLATFORM), windows)
+	echo Not Implemented: Cleaning windows build directories
+else ifeq ($(PLATFORM), linux)
 	rm -f $(LIB_OBJS) $(APP_OBJS) $(LIBRARY) $(EXECUTABLE)
 endif
 
