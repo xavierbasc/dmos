@@ -208,7 +208,10 @@ int main(int argc, char* argv[])
                 {
                     quit = true;
                 }
-
+                else if (e.type == SDL_MOUSEBUTTONDOWN)
+                {
+                    printf("NOT IMPLEMENTED: Mouse Button Identification\n");
+                }
                 
                 //SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF); // White
                 SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF); // White
