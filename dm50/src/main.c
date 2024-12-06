@@ -5,6 +5,7 @@
 #include "SDL.h"
 #include "dm50_skin.h"
 #include "fonts.h"
+#include "keyboard.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
@@ -210,7 +211,11 @@ int main(int argc, char* argv[])
                 }
                 else if (e.type == SDL_MOUSEBUTTONDOWN)
                 {
-                    printf("NOT IMPLEMENTED: Mouse Button Identification\n");
+                    int x, y;
+                    SDL_GetMouseState(&x, &y);
+                    KeyPress keyPress = getKeyPress(x, y); 
+                    printf("Mouse button down detected(%d,%d)\n", x, y);
+                    printf("Key detected: %d\n", keyPress);
                 }
                 
                 //SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF); // White
