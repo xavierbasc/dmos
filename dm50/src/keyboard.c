@@ -154,6 +154,30 @@ KeyPress getKeyPress(int x, int y)
     {
         return RIGHT;
     }
+    else if (HOME_X_POS <= x && x <= HOME_X_POS + HOME_WIDTH && HOME_Y_POS <= y && y <= HOME_Y_POS + HOME_HEIGHT)    
+    {
+        return HOME;
+    }
+    else if (TOOLBOX_X_POS <= x && x <= TOOLBOX_X_POS + TOOLBOX_WIDTH && TOOLBOX_Y_POS <= y && y <= TOOLBOX_Y_POS + TOOLBOX_HEIGHT)    
+    {
+        return TOOLBOX;
+    }
+    else if (BACKSPACE_X_POS <= x && x <= BACKSPACE_X_POS + BACKSPACE_WIDTH && BACKSPACE_Y_POS <= y && y <= BACKSPACE_Y_POS + BACKSPACE_HEIGHT)    
+    {
+        return BACKSPACE;
+    }
+    else if (BACKARROW_X_POS <= x && x <= BACKARROW_X_POS + BACKARROW_WIDTH && BACKARROW_Y_POS <= y && y <= BACKARROW_Y_POS + BACKARROW_HEIGHT)    
+    {
+        return BACKARROW;
+    }
+    else if (UP_X_POS <= x && x <= UP_X_POS + UP_WIDTH && UP_Y_POS <= y && y <= UP_Y_POS + UP_HEIGHT)    
+    {
+        return UP;
+    }
+    else if (SETTINGS_X_POS <= x && x <= SETTINGS_X_POS + SETTINGS_WIDTH && SETTINGS_Y_POS <= y && y <= SETTINGS_Y_POS + SETTINGS_HEIGHT)    
+    {
+        return SETTINGS;
+    }
     
     return UNDEFINED; 
 }

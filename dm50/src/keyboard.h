@@ -191,6 +191,35 @@
 #define RIGHT_Y_POS 246
 #define RIGHT_HEIGHT 32
 
+#define HOME_X_POS 8
+#define HOME_WIDTH 40
+#define HOME_Y_POS 202
+#define HOME_HEIGHT 32
+
+#define TOOLBOX_X_POS 52
+#define TOOLBOX_WIDTH 40
+#define TOOLBOX_Y_POS 202
+#define TOOLBOX_HEIGHT 32
+
+#define BACKSPACE_X_POS 96
+#define BACKSPACE_WIDTH 40
+#define BACKSPACE_Y_POS 202
+#define BACKSPACE_HEIGHT 32
+
+#define BACKARROW_X_POS 140
+#define BACKARROW_WIDTH 40
+#define BACKARROW_Y_POS 202
+#define BACKARROW_HEIGHT 32
+
+#define UP_X_POS 184
+#define UP_WIDTH 40
+#define UP_Y_POS 202
+#define UP_HEIGHT 32
+
+#define SETTINGS_X_POS 228
+#define SETTINGS_WIDTH 40
+#define SETTINGS_Y_POS 202
+#define SETTINGS_HEIGHT 32
 
 typedef enum { UNDEFINED = -1,
                ALL_CLEAR,
@@ -230,7 +259,13 @@ typedef enum { UNDEFINED = -1,
                LOGARITHM,
                LEFT,
                OK,
-               RIGHT} KeyPress;
+               RIGHT,
+               HOME,
+               TOOLBOX,
+               BACKSPACE,
+               BACKARROW,
+               UP,
+               SETTINGS} KeyPress;
 
 KeyPress getKeyPress(int x, int y);
 
