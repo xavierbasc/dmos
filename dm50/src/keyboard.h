@@ -51,6 +51,31 @@
 #define MINUS_TOP 470
 #define MINUS_HEIGHT 32
 
+#define BLUE_SHIFT_LEFT 8
+#define BLUE_SHIFT_WIDTH 32
+#define BLUE_SHIFT_TOP 428
+#define BLUE_SHIFT_HEIGHT 32
+
+#define FOUR_LEFT 60
+#define FOUR_WIDTH 40
+#define FOUR_TOP 428
+#define FOUR_HEIGHT 32
+
+#define FIVE_LEFT 110
+#define FIVE_WIDTH 40
+#define FIVE_TOP 428
+#define FIVE_HEIGHT 32
+
+#define SIX_LEFT 160
+#define SIX_WIDTH 40
+#define SIX_TOP 428
+#define SIX_HEIGHT 32
+
+#define PRODUCT_LEFT 210
+#define PRODUCT_WIDTH 40
+#define PRODUCT_TOP 428
+#define PRODUCT_HEIGHT 32
+
 
 typedef enum { UNDEFINED = -1,
                ALL_CLEAR,
@@ -62,7 +87,12 @@ typedef enum { UNDEFINED = -1,
                ONE,
                TWO,
                THREE,
-               MINUS } KeyPress;
+               MINUS,
+               BLUE_SHIFT,
+               FOUR,
+               FIVE,
+               SIX,
+               PRODUCT} KeyPress;
 
 KeyPress getKeyPress(int x, int y);
 
