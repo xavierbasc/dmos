@@ -2,155 +2,155 @@
 
 KeyPress getKeyPress(int x, int y)
 {
-    if (AC_LEFT <= x && x <= AC_LEFT + AC_WIDTH && AC_TOP <= y && y <= AC_TOP + AC_HEIGHT)    
+    if (AC_X_POS <= x && x <= AC_X_POS + AC_WIDTH && AC_Y_POS <= y && y <= AC_Y_POS + AC_HEIGHT)    
     { 
         return ALL_CLEAR;
     }
-    else if (ZERO_LEFT <= x && x <= ZERO_LEFT + ZERO_WIDTH && ZERO_TOP <= y && y <= ZERO_TOP + ZERO_HEIGHT)    
+    else if (ZERO_X_POS <= x && x <= ZERO_X_POS + ZERO_WIDTH && ZERO_Y_POS <= y && y <= ZERO_Y_POS + ZERO_HEIGHT)    
     {
         return ZERO;
     }
-    else if (DECIMAL_POINT_LEFT <= x && x <= DECIMAL_POINT_LEFT + DECIMAL_POINT_WIDTH && DECIMAL_POINT_TOP <= y && y <= DECIMAL_POINT_TOP + DECIMAL_POINT_HEIGHT)    
+    else if (DECIMAL_POINT_X_POS <= x && x <= DECIMAL_POINT_X_POS + DECIMAL_POINT_WIDTH && DECIMAL_POINT_Y_POS <= y && y <= DECIMAL_POINT_Y_POS + DECIMAL_POINT_HEIGHT)    
     {
         return DECIMAL_POINT;
     }
-    else if (EQUALS_LEFT <= x && x <= EQUALS_LEFT + EQUALS_WIDTH && EQUALS_TOP <= y && y <= EQUALS_TOP + EQUALS_HEIGHT)    
+    else if (EQUALS_X_POS <= x && x <= EQUALS_X_POS + EQUALS_WIDTH && EQUALS_Y_POS <= y && y <= EQUALS_Y_POS + EQUALS_HEIGHT)    
     {
         return EQUALS;
     }
-    else if (PLUS_LEFT <= x && x <= PLUS_LEFT + PLUS_WIDTH && PLUS_TOP <= y && y <= PLUS_TOP + PLUS_HEIGHT)    
+    else if (PLUS_X_POS <= x && x <= PLUS_X_POS + PLUS_WIDTH && PLUS_Y_POS <= y && y <= PLUS_Y_POS + PLUS_HEIGHT)    
     {
         return PLUS;
     }
-    else if (RED_SHIFT_LEFT <= x && x <= RED_SHIFT_LEFT + RED_SHIFT_WIDTH && RED_SHIFT_TOP <= y && y <= RED_SHIFT_TOP + RED_SHIFT_HEIGHT)    
+    else if (RED_SHIFT_X_POS <= x && x <= RED_SHIFT_X_POS + RED_SHIFT_WIDTH && RED_SHIFT_Y_POS <= y && y <= RED_SHIFT_Y_POS + RED_SHIFT_HEIGHT)    
     {
         return RED_SHIFT;
     }
-    else if (ONE_LEFT <= x && x <= ONE_LEFT + ONE_WIDTH && ONE_TOP <= y && y <= ONE_TOP + ONE_HEIGHT)    
+    else if (ONE_X_POS <= x && x <= ONE_X_POS + ONE_WIDTH && ONE_Y_POS <= y && y <= ONE_Y_POS + ONE_HEIGHT)    
     {
         return ONE;
     }
-    else if (TWO_LEFT <= x && x <= TWO_LEFT + TWO_WIDTH && TWO_TOP <= y && y <= TWO_TOP + TWO_HEIGHT)    
+    else if (TWO_X_POS <= x && x <= TWO_X_POS + TWO_WIDTH && TWO_Y_POS <= y && y <= TWO_Y_POS + TWO_HEIGHT)    
     {
         return TWO;
     }
-    else if (THREE_LEFT <= x && x <= THREE_LEFT + THREE_WIDTH && THREE_TOP <= y && y <= THREE_TOP + THREE_HEIGHT)    
+    else if (THREE_X_POS <= x && x <= THREE_X_POS + THREE_WIDTH && THREE_Y_POS <= y && y <= THREE_Y_POS + THREE_HEIGHT)    
     {
         return THREE;
     }
-    else if (MINUS_LEFT <= x && x <= MINUS_LEFT + MINUS_WIDTH && MINUS_TOP <= y && y <= MINUS_TOP + MINUS_HEIGHT)    
+    else if (MINUS_X_POS <= x && x <= MINUS_X_POS + MINUS_WIDTH && MINUS_Y_POS <= y && y <= MINUS_Y_POS + MINUS_HEIGHT)    
     {
         return MINUS;
     }
-    else if (BLUE_SHIFT_LEFT <= x && x <= BLUE_SHIFT_LEFT + BLUE_SHIFT_WIDTH && BLUE_SHIFT_TOP <= y && y <= BLUE_SHIFT_TOP + BLUE_SHIFT_HEIGHT)    
+    else if (BLUE_SHIFT_X_POS <= x && x <= BLUE_SHIFT_X_POS + BLUE_SHIFT_WIDTH && BLUE_SHIFT_Y_POS <= y && y <= BLUE_SHIFT_Y_POS + BLUE_SHIFT_HEIGHT)    
     {
         return BLUE_SHIFT;
     }
-    else if (FOUR_LEFT <= x && x <= FOUR_LEFT + FOUR_WIDTH && FOUR_TOP <= y && y <= FOUR_TOP + FOUR_HEIGHT)    
+    else if (FOUR_X_POS <= x && x <= FOUR_X_POS + FOUR_WIDTH && FOUR_Y_POS <= y && y <= FOUR_Y_POS + FOUR_HEIGHT)    
     {
         return FOUR;
     }
-    else if (FIVE_LEFT <= x && x <= FIVE_LEFT + FIVE_WIDTH && FIVE_TOP <= y && y <= FIVE_TOP + FIVE_HEIGHT)    
+    else if (FIVE_X_POS <= x && x <= FIVE_X_POS + FIVE_WIDTH && FIVE_Y_POS <= y && y <= FIVE_Y_POS + FIVE_HEIGHT)    
     {
         return FIVE;
     }
-    else if (SIX_LEFT <= x && x <= SIX_LEFT + SIX_WIDTH && SIX_TOP <= y && y <= SIX_TOP + SIX_HEIGHT)    
+    else if (SIX_X_POS <= x && x <= SIX_X_POS + SIX_WIDTH && SIX_Y_POS <= y && y <= SIX_Y_POS + SIX_HEIGHT)    
     {
         return SIX;
     }
-    else if (PRODUCT_LEFT <= x && x <= PRODUCT_LEFT + PRODUCT_WIDTH && PRODUCT_TOP <= y && y <= PRODUCT_TOP + PRODUCT_HEIGHT)    
+    else if (PRODUCT_X_POS <= x && x <= PRODUCT_X_POS + PRODUCT_WIDTH && PRODUCT_Y_POS <= y && y <= PRODUCT_Y_POS + PRODUCT_HEIGHT)    
     {
         return PRODUCT;
     }
-    else if (YELLOW_SHIFT_LEFT <= x && x <= YELLOW_SHIFT_LEFT + YELLOW_SHIFT_WIDTH && YELLOW_SHIFT_TOP <= y && y <= YELLOW_SHIFT_TOP + YELLOW_SHIFT_HEIGHT)    
+    else if (YELLOW_SHIFT_X_POS <= x && x <= YELLOW_SHIFT_X_POS + YELLOW_SHIFT_WIDTH && YELLOW_SHIFT_Y_POS <= y && y <= YELLOW_SHIFT_Y_POS + YELLOW_SHIFT_HEIGHT)    
     {
         return YELLOW_SHIFT;
     }
-    else if (SEVEN_LEFT <= x && x <= SEVEN_LEFT + SEVEN_WIDTH && SEVEN_TOP <= y && y <= SEVEN_TOP + SEVEN_HEIGHT)    
+    else if (SEVEN_X_POS <= x && x <= SEVEN_X_POS + SEVEN_WIDTH && SEVEN_Y_POS <= y && y <= SEVEN_Y_POS + SEVEN_HEIGHT)    
     {
         return SEVEN;
     }
-    else if (EIGHT_LEFT <= x && x <= EIGHT_LEFT + EIGHT_WIDTH && EIGHT_TOP <= y && y <= EIGHT_TOP + EIGHT_HEIGHT)    
+    else if (EIGHT_X_POS <= x && x <= EIGHT_X_POS + EIGHT_WIDTH && EIGHT_Y_POS <= y && y <= EIGHT_Y_POS + EIGHT_HEIGHT)    
     {
         return EIGHT;
     }
-    else if (NINE_LEFT <= x && x <= NINE_LEFT + NINE_WIDTH && NINE_TOP <= y && y <= NINE_TOP + NINE_HEIGHT)    
+    else if (NINE_X_POS <= x && x <= NINE_X_POS + NINE_WIDTH && NINE_Y_POS <= y && y <= NINE_Y_POS + NINE_HEIGHT)    
     {
         return NINE;
     }
-    else if (QUOTIENT_LEFT <= x && x <= QUOTIENT_LEFT + QUOTIENT_WIDTH && QUOTIENT_TOP <= y && y <= QUOTIENT_TOP + QUOTIENT_HEIGHT)    
+    else if (QUOTIENT_X_POS <= x && x <= QUOTIENT_X_POS + QUOTIENT_WIDTH && QUOTIENT_Y_POS <= y && y <= QUOTIENT_Y_POS + QUOTIENT_HEIGHT)    
     {
         return QUOTIENT;
     }
-    else if (POWER_TEN_LEFT <= x && x <= POWER_TEN_LEFT + POWER_TEN_WIDTH && POWER_TEN_TOP <= y && y <= POWER_TEN_TOP + POWER_TEN_HEIGHT)    
+    else if (POWER_TEN_X_POS <= x && x <= POWER_TEN_X_POS + POWER_TEN_WIDTH && POWER_TEN_Y_POS <= y && y <= POWER_TEN_Y_POS + POWER_TEN_HEIGHT)    
     {
         return POWER_TEN;
     }
-    else if (PI_LEFT <= x && x <= PI_LEFT + PI_WIDTH && PI_TOP <= y && y <= PI_TOP + PI_HEIGHT)    
+    else if (PI_X_POS <= x && x <= PI_X_POS + PI_WIDTH && PI_Y_POS <= y && y <= PI_Y_POS + PI_HEIGHT)    
     {
         return PI;
     }
-    else if (CHANGE_SIGN_LEFT <= x && x <= CHANGE_SIGN_LEFT + CHANGE_SIGN_WIDTH && CHANGE_SIGN_TOP <= y && y <= CHANGE_SIGN_TOP + CHANGE_SIGN_HEIGHT)    
+    else if (CHANGE_SIGN_X_POS <= x && x <= CHANGE_SIGN_X_POS + CHANGE_SIGN_WIDTH && CHANGE_SIGN_Y_POS <= y && y <= CHANGE_SIGN_Y_POS + CHANGE_SIGN_HEIGHT)    
     {
         return CHANGE_SIGN;
     }
-    else if (LEFT_BRACKET_LEFT <= x && x <= LEFT_BRACKET_LEFT + LEFT_BRACKET_WIDTH && LEFT_BRACKET_TOP <= y && y <= LEFT_BRACKET_TOP + LEFT_BRACKET_HEIGHT)    
+    else if (LEFT_BRACKET_X_POS <= x && x <= LEFT_BRACKET_X_POS + LEFT_BRACKET_WIDTH && LEFT_BRACKET_Y_POS <= y && y <= LEFT_BRACKET_Y_POS + LEFT_BRACKET_HEIGHT)    
     {
         return LEFT_BRACKET;
     }
-    else if (RIGHT_BRACKET_LEFT <= x && x <= RIGHT_BRACKET_LEFT + RIGHT_BRACKET_WIDTH && RIGHT_BRACKET_TOP <= y && y <= RIGHT_BRACKET_TOP + RIGHT_BRACKET_HEIGHT)    
+    else if (RIGHT_BRACKET_X_POS <= x && x <= RIGHT_BRACKET_X_POS + RIGHT_BRACKET_WIDTH && RIGHT_BRACKET_Y_POS <= y && y <= RIGHT_BRACKET_Y_POS + RIGHT_BRACKET_HEIGHT)    
     {
         return RIGHT_BRACKET;
     }
-    else if (LIBRARY_LEFT <= x && x <= LIBRARY_LEFT + LIBRARY_WIDTH && LIBRARY_TOP <= y && y <= LIBRARY_TOP + LIBRARY_HEIGHT)    
+    else if (LIBRARY_X_POS <= x && x <= LIBRARY_X_POS + LIBRARY_WIDTH && LIBRARY_Y_POS <= y && y <= LIBRARY_Y_POS + LIBRARY_HEIGHT)    
     {
         return LIBRARY;
     }
-    else if (SINE_LEFT <= x && x <= SINE_LEFT + SINE_WIDTH && SINE_TOP <= y && y <= SINE_TOP + SINE_HEIGHT)    
+    else if (SINE_X_POS <= x && x <= SINE_X_POS + SINE_WIDTH && SINE_Y_POS <= y && y <= SINE_Y_POS + SINE_HEIGHT)    
     {
         return SINE;
     }
-    else if (COSINE_LEFT <= x && x <= COSINE_LEFT + COSINE_WIDTH && COSINE_TOP <= y && y <= COSINE_TOP + COSINE_HEIGHT)    
+    else if (COSINE_X_POS <= x && x <= COSINE_X_POS + COSINE_WIDTH && COSINE_Y_POS <= y && y <= COSINE_Y_POS + COSINE_HEIGHT)    
     {
         return COSINE;
     }
-    else if (TANGENT_LEFT <= x && x <= TANGENT_LEFT + TANGENT_WIDTH && TANGENT_TOP <= y && y <= TANGENT_TOP + TANGENT_HEIGHT)    
+    else if (TANGENT_X_POS <= x && x <= TANGENT_X_POS + TANGENT_WIDTH && TANGENT_Y_POS <= y && y <= TANGENT_Y_POS + TANGENT_HEIGHT)    
     {
         return TANGENT;
     }
-    else if (FRACTION_LEFT <= x && x <= FRACTION_LEFT + FRACTION_WIDTH && FRACTION_TOP <= y && y <= FRACTION_TOP + FRACTION_HEIGHT)    
+    else if (FRACTION_X_POS <= x && x <= FRACTION_X_POS + FRACTION_WIDTH && FRACTION_Y_POS <= y && y <= FRACTION_Y_POS + FRACTION_HEIGHT)    
     {
         return FRACTION;
     }
-    else if (DOWN_LEFT <= x && x <= DOWN_LEFT + DOWN_WIDTH && DOWN_TOP <= y && y <= DOWN_TOP + DOWN_HEIGHT)    
+    else if (DOWN_X_POS <= x && x <= DOWN_X_POS + DOWN_WIDTH && DOWN_Y_POS <= y && y <= DOWN_Y_POS + DOWN_HEIGHT)    
     {
         return DOWN;
     }
-    else if (BACK_LEFT <= x && x <= BACK_LEFT + BACK_WIDTH && BACK_TOP <= y && y <= BACK_TOP + BACK_HEIGHT)    
+    else if (BACK_X_POS <= x && x <= BACK_X_POS + BACK_WIDTH && BACK_Y_POS <= y && y <= BACK_Y_POS + BACK_HEIGHT)    
     {
         return BACK;
     }
-    else if (SQUARE_ROOT_LEFT <= x && x <= SQUARE_ROOT_LEFT + SQUARE_ROOT_WIDTH && SQUARE_ROOT_TOP <= y && y <= SQUARE_ROOT_TOP + SQUARE_ROOT_HEIGHT)    
+    else if (SQUARE_ROOT_X_POS <= x && x <= SQUARE_ROOT_X_POS + SQUARE_ROOT_WIDTH && SQUARE_ROOT_Y_POS <= y && y <= SQUARE_ROOT_Y_POS + SQUARE_ROOT_HEIGHT)    
     {
         return SQUARE_ROOT;
     }
-    else if (SQUARE_LEFT <= x && x <= SQUARE_LEFT + SQUARE_WIDTH && SQUARE_TOP <= y && y <= SQUARE_TOP + SQUARE_HEIGHT)    
+    else if (SQUARE_X_POS <= x && x <= SQUARE_X_POS + SQUARE_WIDTH && SQUARE_Y_POS <= y && y <= SQUARE_Y_POS + SQUARE_HEIGHT)    
     {
         return SQUARE;
     }
-    else if (LOGARITHM_LEFT <= x && x <= LOGARITHM_LEFT + LOGARITHM_WIDTH && LOGARITHM_TOP <= y && y <= LOGARITHM_TOP + LOGARITHM_HEIGHT)    
+    else if (LOGARITHM_X_POS <= x && x <= LOGARITHM_X_POS + LOGARITHM_WIDTH && LOGARITHM_Y_POS <= y && y <= LOGARITHM_Y_POS + LOGARITHM_HEIGHT)    
     {
         return LOGARITHM;
     }
-    else if (LEFT_LEFT <= x && x <= LEFT_LEFT + LEFT_WIDTH && LEFT_TOP <= y && y <= LEFT_TOP + LEFT_HEIGHT)    
+    else if (LEFT_X_POS <= x && x <= LEFT_X_POS + LEFT_WIDTH && LEFT_Y_POS <= y && y <= LEFT_Y_POS + LEFT_HEIGHT)    
     {
         return LEFT;
     }
-    else if (OK_LEFT <= x && x <= OK_LEFT + OK_WIDTH && OK_TOP <= y && y <= OK_TOP + OK_HEIGHT)    
+    else if (OK_X_POS <= x && x <= OK_X_POS + OK_WIDTH && OK_Y_POS <= y && y <= OK_Y_POS + OK_HEIGHT)    
     {
         return OK;
     }
-    else if (RIGHT_LEFT <= x && x <= RIGHT_LEFT + RIGHT_WIDTH && RIGHT_TOP <= y && y <= RIGHT_TOP + RIGHT_HEIGHT)    
+    else if (RIGHT_X_POS <= x && x <= RIGHT_X_POS + RIGHT_WIDTH && RIGHT_Y_POS <= y && y <= RIGHT_Y_POS + RIGHT_HEIGHT)    
     {
         return RIGHT;
     }
