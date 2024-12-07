@@ -221,6 +221,36 @@
 #define SETTINGS_Y_POS 202
 #define SETTINGS_HEIGHT 32
 
+#define FUNCTION_ONE_X_POS 8
+#define FUNCTION_ONE_WIDTH 40
+#define FUNCTION_ONE_Y_POS 158
+#define FUNCTION_ONE_HEIGHT 32
+
+#define FUNCTION_TWO_X_POS 52
+#define FUNCTION_TWO_WIDTH 40
+#define FUNCTION_TWO_Y_POS 158
+#define FUNCTION_TWO_HEIGHT 32
+
+#define FUNCTION_THREE_X_POS 96
+#define FUNCTION_THREE_WIDTH 40
+#define FUNCTION_THREE_Y_POS 158
+#define FUNCTION_THREE_HEIGHT 32
+
+#define FUNCTION_FOUR_X_POS 140
+#define FUNCTION_FOUR_WIDTH 40
+#define FUNCTION_FOUR_Y_POS 158
+#define FUNCTION_FOUR_HEIGHT 32
+
+#define FUNCTION_FIVE_X_POS 184
+#define FUNCTION_FIVE_WIDTH 40
+#define FUNCTION_FIVE_Y_POS 158
+#define FUNCTION_FIVE_HEIGHT 32
+
+#define FUNCTION_SIX_X_POS 228
+#define FUNCTION_SIX_WIDTH 40
+#define FUNCTION_SIX_Y_POS 158
+#define FUNCTION_SIX_HEIGHT 32
+
 typedef enum { UNDEFINED = -1,
                ALL_CLEAR,
                ZERO,
@@ -265,7 +295,13 @@ typedef enum { UNDEFINED = -1,
                BACKSPACE,
                BACKARROW,
                UP,
-               SETTINGS} KeyPress;
+               SETTINGS,
+               FUNCTION_ONE,
+               FUNCTION_TWO,
+               FUNCTION_THREE,
+               FUNCTION_FOUR,
+               FUNCTION_FIVE,
+               FUNCTION_SIX} KeyPress;
 
 KeyPress getKeyPress(int x, int y);
 

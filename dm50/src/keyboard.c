@@ -178,6 +178,30 @@ KeyPress getKeyPress(int x, int y)
     {
         return SETTINGS;
     }
+    else if (FUNCTION_ONE_X_POS <= x && x <= FUNCTION_ONE_X_POS + FUNCTION_ONE_WIDTH && FUNCTION_ONE_Y_POS <= y && y <= FUNCTION_ONE_Y_POS + FUNCTION_ONE_HEIGHT)    
+    {
+        return FUNCTION_ONE;
+    }
+    else if (FUNCTION_TWO_X_POS <= x && x <= FUNCTION_TWO_X_POS + FUNCTION_TWO_WIDTH && FUNCTION_TWO_Y_POS <= y && y <= FUNCTION_TWO_Y_POS + FUNCTION_TWO_HEIGHT)    
+    {
+        return FUNCTION_TWO;
+    }
+    else if (FUNCTION_THREE_X_POS <= x && x <= FUNCTION_THREE_X_POS + FUNCTION_THREE_WIDTH && FUNCTION_THREE_Y_POS <= y && y <= FUNCTION_THREE_Y_POS + FUNCTION_THREE_HEIGHT)    
+    {
+        return FUNCTION_THREE;
+    }
+    else if (FUNCTION_FOUR_X_POS <= x && x <= FUNCTION_FOUR_X_POS + FUNCTION_FOUR_WIDTH && FUNCTION_FOUR_Y_POS <= y && y <= FUNCTION_FOUR_Y_POS + FUNCTION_FOUR_HEIGHT)    
+    {
+        return FUNCTION_FOUR;
+    }
+    else if (FUNCTION_FIVE_X_POS <= x && x <= FUNCTION_FIVE_X_POS + FUNCTION_FIVE_WIDTH && FUNCTION_FIVE_Y_POS <= y && y <= FUNCTION_FIVE_Y_POS + FUNCTION_FIVE_HEIGHT)    
+    {
+        return FUNCTION_FIVE;
+    }
+    else if (FUNCTION_SIX_X_POS <= x && x <= FUNCTION_SIX_X_POS + FUNCTION_SIX_WIDTH && FUNCTION_SIX_Y_POS <= y && y <= FUNCTION_SIX_Y_POS + FUNCTION_SIX_HEIGHT)    
+    {
+        return FUNCTION_SIX;
+    }
     
     return UNDEFINED; 
 }
