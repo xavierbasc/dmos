@@ -22,6 +22,26 @@ KeyPress getKeyPress(int x, int y)
     {
         return PLUS;
     }
+    else if (RED_SHIFT_LEFT <= x && x <= RED_SHIFT_LEFT + RED_SHIFT_WIDTH && RED_SHIFT_TOP <= y && y <= RED_SHIFT_TOP + RED_SHIFT_HEIGHT)    
+    {
+        return RED_SHIFT;
+    }
+    else if (ONE_LEFT <= x && x <= ONE_LEFT + ONE_WIDTH && ONE_TOP <= y && y <= ONE_TOP + ONE_HEIGHT)    
+    {
+        return ONE;
+    }
+    else if (TWO_LEFT <= x && x <= TWO_LEFT + TWO_WIDTH && TWO_TOP <= y && y <= TWO_TOP + TWO_HEIGHT)    
+    {
+        return TWO;
+    }
+    else if (THREE_LEFT <= x && x <= THREE_LEFT + THREE_WIDTH && THREE_TOP <= y && y <= THREE_TOP + THREE_HEIGHT)    
+    {
+        return THREE;
+    }
+    else if (MINUS_LEFT <= x && x <= MINUS_LEFT + MINUS_WIDTH && MINUS_TOP <= y && y <= MINUS_TOP + MINUS_HEIGHT)    
+    {
+        return MINUS;
+    }
     
     return UNDEFINED; 
 }
