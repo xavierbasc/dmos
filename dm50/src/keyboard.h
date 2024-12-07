@@ -1,3 +1,8 @@
+//NAME: keyboard.h
+//PURPOSE: Header for mapping from x,y coordinates to keypressess
+//AUTHOR: Damien Sticklen
+//DATE: 2024-12-07
+
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
 

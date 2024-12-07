@@ -1,5 +1,12 @@
+//NAME: keyboard.h
+//PURPOSE: Header for mapping from x,y coordinates to keypressess
+//AUTHOR: Damien Sticklen
+//DATE: 2024-12-07
+
 #include "keyboard.h"
 
+//Converts an x,y coordinate to a recognised keypress
+//TODO: Recompute x,y values based on scaling
 KeyPress getKeyPress(int x, int y)
 {
     if (AC_X_POS <= x && x <= AC_X_POS + AC_WIDTH && AC_Y_POS <= y && y <= AC_Y_POS + AC_HEIGHT)    
