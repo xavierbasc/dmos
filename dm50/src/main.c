@@ -5,6 +5,7 @@
 #include "SDL.h"
 #include "dm50_skin.h"
 #include "fonts.h"
+#include "keyboard.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
@@ -91,8 +92,8 @@ int main(int argc, char* argv[])
     int scaleX, scaleY;
     
     if (strcmp(SDL_GetPlatform(), "iOS") == 0) {
-        //scaleX = screenWidth / SCREEN_WIDTH;
-        //scaleY = screenHeight / SCREEN_HEIGHT;
+        scaleX = screenWidth / SCREEN_WIDTH;
+        scaleY = screenHeight / SCREEN_HEIGHT;
     } else {
         // Obtén el tamaño de la pantalla
         SDL_DisplayMode displayMode;
@@ -208,7 +209,14 @@ int main(int argc, char* argv[])
                 {
                     quit = true;
                 }
-
+                else if (e.type == SDL_MOUSEBUTTONDOWN)
+                {
+                    int x, y;
+                    SDL_GetMouseState(&x, &y);
+                    KeyPress keyPress = getKeyPress(x, y); 
+                    printf("Mouse button down detected(%d,%d)\n", x, y);
+                    printf("Key detected: %d\n", keyPress);
+                }
                 
                 //SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF); // White
                 SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF); // White
