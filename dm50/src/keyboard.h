@@ -77,6 +77,32 @@
 #define PRODUCT_HEIGHT 32
 
 
+#define YELLOW_SHIFT_LEFT 8
+#define YELLOW_SHIFT_WIDTH 32
+#define YELLOW_SHIFT_TOP 380
+#define YELLOW_SHIFT_HEIGHT 32
+
+#define SEVEN_LEFT 60
+#define SEVEN_WIDTH 40
+#define SEVEN_TOP 380
+#define SEVEN_HEIGHT 32
+
+#define EIGHT_LEFT 110
+#define EIGHT_WIDTH 40
+#define EIGHT_TOP 380
+#define EIGHT_HEIGHT 32
+
+#define NINE_LEFT 160
+#define NINE_WIDTH 40
+#define NINE_TOP 380
+#define NINE_HEIGHT 32
+
+#define QUOTIENT_LEFT 210
+#define QUOTIENT_WIDTH 40
+#define QUOTIENT_TOP 380
+#define QUOTIENT_HEIGHT 32
+
+
 typedef enum { UNDEFINED = -1,
                ALL_CLEAR,
                ZERO,
@@ -92,7 +118,12 @@ typedef enum { UNDEFINED = -1,
                FOUR,
                FIVE,
                SIX,
-               PRODUCT} KeyPress;
+               PRODUCT,
+               YELLOW_SHIFT,
+               SEVEN,
+               EIGHT,
+               NINE,
+               QUOTIENT} KeyPress;
 
 KeyPress getKeyPress(int x, int y);
 
