@@ -82,6 +82,30 @@ KeyPress getKeyPress(int x, int y)
     {
         return QUOTIENT;
     }
+    else if (POWER_TEN_LEFT <= x && x <= POWER_TEN_LEFT + POWER_TEN_WIDTH && POWER_TEN_TOP <= y && y <= POWER_TEN_TOP + POWER_TEN_HEIGHT)    
+    {
+        return POWER_TEN;
+    }
+    else if (PI_LEFT <= x && x <= PI_LEFT + PI_WIDTH && PI_TOP <= y && y <= PI_TOP + PI_HEIGHT)    
+    {
+        return PI;
+    }
+    else if (CHANGE_SIGN_LEFT <= x && x <= CHANGE_SIGN_LEFT + CHANGE_SIGN_WIDTH && CHANGE_SIGN_TOP <= y && y <= CHANGE_SIGN_TOP + CHANGE_SIGN_HEIGHT)    
+    {
+        return CHANGE_SIGN;
+    }
+    else if (LEFT_BRACKET_LEFT <= x && x <= LEFT_BRACKET_LEFT + LEFT_BRACKET_WIDTH && LEFT_BRACKET_TOP <= y && y <= LEFT_BRACKET_TOP + LEFT_BRACKET_HEIGHT)    
+    {
+        return LEFT_BRACKET;
+    }
+    else if (RIGHT_BRACKET_LEFT <= x && x <= RIGHT_BRACKET_LEFT + RIGHT_BRACKET_WIDTH && RIGHT_BRACKET_TOP <= y && y <= RIGHT_BRACKET_TOP + RIGHT_BRACKET_HEIGHT)    
+    {
+        return RIGHT_BRACKET;
+    }
+    else if (LIBRARY_LEFT <= x && x <= LIBRARY_LEFT + LIBRARY_WIDTH && LIBRARY_TOP <= y && y <= LIBRARY_TOP + LIBRARY_HEIGHT)    
+    {
+        return LIBRARY;
+    }
     
     return UNDEFINED; 
 }

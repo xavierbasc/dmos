@@ -76,7 +76,6 @@
 #define PRODUCT_TOP 428
 #define PRODUCT_HEIGHT 32
 
-
 #define YELLOW_SHIFT_LEFT 8
 #define YELLOW_SHIFT_WIDTH 32
 #define YELLOW_SHIFT_TOP 380
@@ -102,6 +101,36 @@
 #define QUOTIENT_TOP 380
 #define QUOTIENT_HEIGHT 32
 
+#define POWER_TEN_LEFT 8
+#define POWER_TEN_WIDTH 40
+#define POWER_TEN_TOP 334
+#define POWER_TEN_HEIGHT 32
+
+#define PI_LEFT 52
+#define PI_WIDTH 40
+#define PI_TOP 334
+#define PI_HEIGHT 32
+
+#define CHANGE_SIGN_LEFT 96
+#define CHANGE_SIGN_WIDTH 40
+#define CHANGE_SIGN_TOP 334
+#define CHANGE_SIGN_HEIGHT 32
+
+#define LEFT_BRACKET_LEFT 140
+#define LEFT_BRACKET_WIDTH 40
+#define LEFT_BRACKET_TOP 334
+#define LEFT_BRACKET_HEIGHT 32
+
+#define RIGHT_BRACKET_LEFT 184
+#define RIGHT_BRACKET_WIDTH 40
+#define RIGHT_BRACKET_TOP 334
+#define RIGHT_BRACKET_HEIGHT 32
+
+#define LIBRARY_LEFT 228
+#define LIBRARY_WIDTH 40
+#define LIBRARY_TOP 334
+#define LIBRARY_HEIGHT 32
+
 
 typedef enum { UNDEFINED = -1,
                ALL_CLEAR,
@@ -123,7 +152,13 @@ typedef enum { UNDEFINED = -1,
                SEVEN,
                EIGHT,
                NINE,
-               QUOTIENT} KeyPress;
+               QUOTIENT,
+               POWER_TEN,
+               PI,
+               CHANGE_SIGN,
+               LEFT_BRACKET,
+               RIGHT_BRACKET,
+               LIBRARY} KeyPress;
 
 KeyPress getKeyPress(int x, int y);
 
