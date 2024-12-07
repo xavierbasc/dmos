@@ -131,6 +131,66 @@
 #define LIBRARY_TOP 334
 #define LIBRARY_HEIGHT 32
 
+#define SINE_LEFT 8
+#define SINE_WIDTH 40
+#define SINE_TOP 290
+#define SINE_HEIGHT 32
+
+#define COSINE_LEFT 52
+#define COSINE_WIDTH 40
+#define COSINE_TOP 290
+#define COSINE_HEIGHT 32
+
+#define TANGENT_LEFT 96
+#define TANGENT_WIDTH 40
+#define TANGENT_TOP 290
+#define TANGENT_HEIGHT 32
+
+#define FRACTION_LEFT 140
+#define FRACTION_WIDTH 40
+#define FRACTION_TOP 290
+#define FRACTION_HEIGHT 32
+
+#define DOWN_LEFT 184
+#define DOWN_WIDTH 40
+#define DOWN_TOP 290
+#define DOWN_HEIGHT 32
+
+#define BACK_LEFT 228
+#define BACK_WIDTH 40
+#define BACK_TOP 290
+#define BACK_HEIGHT 32
+
+#define SQUARE_ROOT_LEFT 8
+#define SQUARE_ROOT_WIDTH 40
+#define SQUARE_ROOT_TOP 246
+#define SQUARE_ROOT_HEIGHT 32
+
+#define SQUARE_LEFT 52
+#define SQUARE_WIDTH 40
+#define SQUARE_TOP 246
+#define SQUARE_HEIGHT 32
+
+#define LOGARITHM_LEFT 96
+#define LOGARITHM_WIDTH 40
+#define LOGARITHM_TOP 246
+#define LOGARITHM_HEIGHT 32
+
+#define LEFT_LEFT 140
+#define LEFT_WIDTH 40
+#define LEFT_TOP 246
+#define LEFT_HEIGHT 32
+
+#define OK_LEFT 184
+#define OK_WIDTH 40
+#define OK_TOP 246
+#define OK_HEIGHT 32
+
+#define RIGHT_LEFT 228
+#define RIGHT_WIDTH 40
+#define RIGHT_TOP 246
+#define RIGHT_HEIGHT 32
+
 
 typedef enum { UNDEFINED = -1,
                ALL_CLEAR,
@@ -158,7 +218,19 @@ typedef enum { UNDEFINED = -1,
                CHANGE_SIGN,
                LEFT_BRACKET,
                RIGHT_BRACKET,
-               LIBRARY} KeyPress;
+               LIBRARY,
+               SINE,
+               COSINE,
+               TANGENT,
+               FRACTION,
+               DOWN,
+               BACK,
+               SQUARE_ROOT,
+               SQUARE,
+               LOGARITHM,
+               LEFT,
+               OK,
+               RIGHT} KeyPress;
 
 KeyPress getKeyPress(int x, int y);
 

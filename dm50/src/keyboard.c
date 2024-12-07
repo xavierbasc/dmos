@@ -106,6 +106,54 @@ KeyPress getKeyPress(int x, int y)
     {
         return LIBRARY;
     }
+    else if (SINE_LEFT <= x && x <= SINE_LEFT + SINE_WIDTH && SINE_TOP <= y && y <= SINE_TOP + SINE_HEIGHT)    
+    {
+        return SINE;
+    }
+    else if (COSINE_LEFT <= x && x <= COSINE_LEFT + COSINE_WIDTH && COSINE_TOP <= y && y <= COSINE_TOP + COSINE_HEIGHT)    
+    {
+        return COSINE;
+    }
+    else if (TANGENT_LEFT <= x && x <= TANGENT_LEFT + TANGENT_WIDTH && TANGENT_TOP <= y && y <= TANGENT_TOP + TANGENT_HEIGHT)    
+    {
+        return TANGENT;
+    }
+    else if (FRACTION_LEFT <= x && x <= FRACTION_LEFT + FRACTION_WIDTH && FRACTION_TOP <= y && y <= FRACTION_TOP + FRACTION_HEIGHT)    
+    {
+        return FRACTION;
+    }
+    else if (DOWN_LEFT <= x && x <= DOWN_LEFT + DOWN_WIDTH && DOWN_TOP <= y && y <= DOWN_TOP + DOWN_HEIGHT)    
+    {
+        return DOWN;
+    }
+    else if (BACK_LEFT <= x && x <= BACK_LEFT + BACK_WIDTH && BACK_TOP <= y && y <= BACK_TOP + BACK_HEIGHT)    
+    {
+        return BACK;
+    }
+    else if (SQUARE_ROOT_LEFT <= x && x <= SQUARE_ROOT_LEFT + SQUARE_ROOT_WIDTH && SQUARE_ROOT_TOP <= y && y <= SQUARE_ROOT_TOP + SQUARE_ROOT_HEIGHT)    
+    {
+        return SQUARE_ROOT;
+    }
+    else if (SQUARE_LEFT <= x && x <= SQUARE_LEFT + SQUARE_WIDTH && SQUARE_TOP <= y && y <= SQUARE_TOP + SQUARE_HEIGHT)    
+    {
+        return SQUARE;
+    }
+    else if (LOGARITHM_LEFT <= x && x <= LOGARITHM_LEFT + LOGARITHM_WIDTH && LOGARITHM_TOP <= y && y <= LOGARITHM_TOP + LOGARITHM_HEIGHT)    
+    {
+        return LOGARITHM;
+    }
+    else if (LEFT_LEFT <= x && x <= LEFT_LEFT + LEFT_WIDTH && LEFT_TOP <= y && y <= LEFT_TOP + LEFT_HEIGHT)    
+    {
+        return LEFT;
+    }
+    else if (OK_LEFT <= x && x <= OK_LEFT + OK_WIDTH && OK_TOP <= y && y <= OK_TOP + OK_HEIGHT)    
+    {
+        return OK;
+    }
+    else if (RIGHT_LEFT <= x && x <= RIGHT_LEFT + RIGHT_WIDTH && RIGHT_TOP <= y && y <= RIGHT_TOP + RIGHT_HEIGHT)    
+    {
+        return RIGHT;
+    }
     
     return UNDEFINED; 
 }
