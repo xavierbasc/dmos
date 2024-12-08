@@ -10,7 +10,7 @@
 //TODO: Recompute x,y values based on scaling
 KeyPress getKeyPress(int x, int y, int scale)
 {
-    printf("scaleX: %d, scaleY %d\n", scale);
+    printf("scale %d\n", scale);
 
     //Need to be careful of scale == 0
     x /= scale;
