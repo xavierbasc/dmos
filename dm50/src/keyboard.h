@@ -6,10 +6,10 @@
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
 
-#define AC_X_POS 8
-#define AC_WIDTH 32
-#define AC_Y_POS 518
-#define AC_HEIGHT 32
+#define AC_X_POS 4
+#define AC_WIDTH 15
+#define AC_Y_POS 258
+#define AC_HEIGHT 10
 
 #define ZERO_X_POS 60
 #define ZERO_WIDTH 40
@@ -308,6 +308,6 @@ typedef enum { UNDEFINED = -1,
                FUNCTION_FIVE,
                FUNCTION_SIX} KeyPress;
 
-KeyPress getKeyPress(int x, int y);
+KeyPress getKeyPress(int x, int y, int scale);
 
 #endif

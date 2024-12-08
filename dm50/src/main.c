@@ -213,7 +213,7 @@ int main(int argc, char* argv[])
                 {
                     int x, y;
                     SDL_GetMouseState(&x, &y);
-                    KeyPress keyPress = getKeyPress(x, y); 
+                    KeyPress keyPress = getKeyPress(x, y, scaleY);
                     printf("Mouse button down detected(%d,%d)\n", x, y);
                     printf("Key detected: %d\n", keyPress);
                 }
