@@ -46,7 +46,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3B6C4D1D2D05B52200BBFEF3 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../libs/macos/libSDL2.a; sourceTree = "<group>"; };
 		3B6C4D1F2D05B5EF00BBFEF3 /* SDL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDL.xcodeproj; path = ../external/SDL2/Xcode/SDL/SDL.xcodeproj; sourceTree = "<group>"; };
 		3B8455CB2CDE86AB00813F12 /* macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BFA69DB2CEE6A370003AC2F /* libm.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libm.tbd; path = usr/lib/libm.tbd; sourceTree = SDKROOT; };
@@ -143,7 +142,6 @@
 				3BFA69DF2CEE6A440003AC2F /* CoreVideo.framework */,
 				3BFA69DD2CEE6A3D0003AC2F /* libpthread.tbd */,
 				3BFA69DB2CEE6A370003AC2F /* libm.tbd */,
-				3B6C4D1D2D05B52200BBFEF3 /* libSDL2.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

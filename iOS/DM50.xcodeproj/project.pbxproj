@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B3176252CEA6A31000A48A8 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BE944692CEA679900FCEEE7 /* libSDL2.a */; };
 		3BE944C42CEA680300FCEEE7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FD925B180E0F276600E92347 /* Icon.png */; };
+		3BF8EDA52D05BD39006A204E /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BE944692CEA679900FCEEE7 /* libSDL2.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +89,13 @@
 			remoteGlobalIDString = BECDF6BE0761BA81005FE872;
 			remoteInfo = "Standard DMG";
 		};
+		3BF8EDA62D05BDCE006A204E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3BE9444E2CEA678400FCEEE7 /* SDL.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A7D88A1423E2437C00DCD162;
+			remoteInfo = "Framework-iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -109,7 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B3176252CEA6A31000A48A8 /* libSDL2.a in Frameworks */,
+				3BF8EDA52D05BD39006A204E /* libSDL2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +193,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				3BF8EDA72D05BDCE006A204E /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				3BE944DB2CEA684000FCEEE7 /* src */,
@@ -334,6 +342,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3BF8EDA72D05BDCE006A204E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Framework-iOS";
+			targetProxy = 3BF8EDA62D05BDCE006A204E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3BE944CB2CEA680300FCEEE7 /* Debug */ = {
