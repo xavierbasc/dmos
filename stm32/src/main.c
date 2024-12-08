@@ -15,20 +15,19 @@ SCL         SPI Clock     PA5           SPI1_SCK: SPI Clock.
 CS          Chip Select   PA6           GPIO: Selects the display.
 SI          SPI Data      PA7           SPI1_MOSI: SPI Data.
 */
-
 /******************************delay time***********************************/  
-void delay_ms(unsigned int ms)  
-{  
-    unsigned int n;  
-    while(ms--)  
-    {  
-        n = 8600 * 4;  
+void delay_ms(unsigned int ms)
+{
+    unsigned int n;
+    while(ms--)
+    {
+        n = 8600 * 4;
         while(n--)
         {
             asm("nop");
         }
-    }  
-} 
+    }
+}
 
 static inline void NOP(void)
 {
