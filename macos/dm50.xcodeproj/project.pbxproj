@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B6C4D432D05B63000BBFEF3 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6C4D362D05B5EF00BBFEF3 /* libSDL2.a */; };
 		3BFA69DC2CEE6A370003AC2F /* libm.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69DB2CEE6A370003AC2F /* libm.tbd */; };
 		3BFA69DE2CEE6A3D0003AC2F /* libpthread.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69DD2CEE6A3D0003AC2F /* libpthread.tbd */; };
 		3BFA69E02CEE6A440003AC2F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69DF2CEE6A440003AC2F /* CoreVideo.framework */; };
@@ -14,13 +15,22 @@
 		3BFA69E42CEE6A500003AC2F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69E32CEE6A500003AC2F /* IOKit.framework */; };
 		3BFA69E62CEE6A570003AC2F /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69E52CEE6A570003AC2F /* Carbon.framework */; };
 		3BFA69E82CEE6A5C0003AC2F /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69E72CEE6A5C0003AC2F /* CoreAudio.framework */; };
-		3BFA69EA2CEE6CB00003AC2F /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69E92CEE6CB00003AC2F /* libSDL2.a */; };
 		3BFA69ED2CEE6E8E0003AC2F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69EC2CEE6E8E0003AC2F /* AudioToolbox.framework */; };
 		3BFA69EF2CEE6EAA0003AC2F /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69EE2CEE6EAA0003AC2F /* CoreHaptics.framework */; };
 		3BFA69F12CEE6EBB0003AC2F /* ForceFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69F02CEE6EBB0003AC2F /* ForceFeedback.framework */; };
 		3BFA69F32CEE6ED20003AC2F /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69F22CEE6ED20003AC2F /* GameController.framework */; };
 		3BFA69F52CEE6EE50003AC2F /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA69F42CEE6EE50003AC2F /* Metal.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3B6C4D352D05B5EF00BBFEF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B6C4D1F2D05B5EF00BBFEF3 /* SDL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BECDF6B30761BA81005FE872;
+			remoteInfo = "Static Library";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		3B8455E42CDE879000813F12 /* Embed Frameworks */ = {
@@ -36,6 +46,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3B6C4D1D2D05B52200BBFEF3 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../libs/macos/libSDL2.a; sourceTree = "<group>"; };
+		3B6C4D1F2D05B5EF00BBFEF3 /* SDL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDL.xcodeproj; path = ../external/SDL2/Xcode/SDL/SDL.xcodeproj; sourceTree = "<group>"; };
 		3B8455CB2CDE86AB00813F12 /* macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BFA69DB2CEE6A370003AC2F /* libm.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libm.tbd; path = usr/lib/libm.tbd; sourceTree = SDKROOT; };
 		3BFA69DD2CEE6A3D0003AC2F /* libpthread.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libpthread.tbd; path = usr/lib/libpthread.tbd; sourceTree = SDKROOT; };
@@ -44,7 +56,6 @@
 		3BFA69E32CEE6A500003AC2F /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		3BFA69E52CEE6A570003AC2F /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		3BFA69E72CEE6A5C0003AC2F /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
-		3BFA69E92CEE6CB00003AC2F /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../external/SDL2/build/libSDL2.a; sourceTree = "<group>"; };
 		3BFA69EC2CEE6E8E0003AC2F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		3BFA69EE2CEE6EAA0003AC2F /* CoreHaptics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreHaptics.framework; path = System/Library/Frameworks/CoreHaptics.framework; sourceTree = SDKROOT; };
 		3BFA69F02CEE6EBB0003AC2F /* ForceFeedback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ForceFeedback.framework; path = System/Library/Frameworks/ForceFeedback.framework; sourceTree = SDKROOT; };
@@ -83,16 +94,25 @@
 				3BFA69F52CEE6EE50003AC2F /* Metal.framework in Frameworks */,
 				3BFA69DE2CEE6A3D0003AC2F /* libpthread.tbd in Frameworks */,
 				3BFA69DC2CEE6A370003AC2F /* libm.tbd in Frameworks */,
-				3BFA69EA2CEE6CB00003AC2F /* libSDL2.a in Frameworks */,
+				3B6C4D432D05B63000BBFEF3 /* libSDL2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B6C4D202D05B5EF00BBFEF3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B6C4D362D05B5EF00BBFEF3 /* libSDL2.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		3B8455C22CDE86AB00813F12 = {
 			isa = PBXGroup;
 			children = (
+				3B6C4D1F2D05B5EF00BBFEF3 /* SDL.xcodeproj */,
 				3B84562C2CDE896D00813F12 /* src */,
 				3B8455CD2CDE86AB00813F12 /* macos */,
 				3BFA69DA2CEE6A370003AC2F /* Frameworks */,
@@ -116,7 +136,6 @@
 				3BFA69F02CEE6EBB0003AC2F /* ForceFeedback.framework */,
 				3BFA69EE2CEE6EAA0003AC2F /* CoreHaptics.framework */,
 				3BFA69EC2CEE6E8E0003AC2F /* AudioToolbox.framework */,
-				3BFA69E92CEE6CB00003AC2F /* libSDL2.a */,
 				3BFA69E72CEE6A5C0003AC2F /* CoreAudio.framework */,
 				3BFA69E52CEE6A570003AC2F /* Carbon.framework */,
 				3BFA69E32CEE6A500003AC2F /* IOKit.framework */,
@@ -124,6 +143,7 @@
 				3BFA69DF2CEE6A440003AC2F /* CoreVideo.framework */,
 				3BFA69DD2CEE6A3D0003AC2F /* libpthread.tbd */,
 				3BFA69DB2CEE6A370003AC2F /* libm.tbd */,
+				3B6C4D1D2D05B52200BBFEF3 /* libSDL2.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -181,12 +201,28 @@
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3B8455CC2CDE86AB00813F12 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3B6C4D202D05B5EF00BBFEF3 /* Products */;
+					ProjectRef = 3B6C4D1F2D05B5EF00BBFEF3 /* SDL.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				3B8455CA2CDE86AB00813F12 /* macOS */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		3B6C4D362D05B5EF00BBFEF3 /* libSDL2.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSDL2.a;
+			remoteRef = 3B6C4D352D05B5EF00BBFEF3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3B8455C92CDE86AB00813F12 /* Resources */ = {
