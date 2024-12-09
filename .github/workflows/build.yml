@@ -32,7 +32,7 @@ jobs:
                     -derivedDataPath ./build/macos \
                     build
           mkdir -p artifacts
-          cp build/macos/Build/Products/Release/DM50 artifacts/dm50
+          cp build/macos/Build/Products/Release/DM50.app artifacts/dm50
 
       # Compress binary
       - name: Compress binary
