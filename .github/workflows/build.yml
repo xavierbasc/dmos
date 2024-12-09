@@ -18,6 +18,10 @@ jobs:
       - name: Clone SDL2
         run: git clone --depth=1 --branch release-2.30.9 https://github.com/libsdl-org/SDL.git external/SDL2
 
+      # Xcode 16.1
+      - name: Set Xcode version to 16.1
+        run: sudo xcode-select -s /Applications/Xcode_16.1.app/Contents/Developer
+
       # Xcode compilation
       - name: Build binary
         run: |
