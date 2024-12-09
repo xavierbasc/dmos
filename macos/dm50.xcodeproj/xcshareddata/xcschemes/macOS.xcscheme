@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3B8455CA2CDE86AB00813F12"
-               BuildableName = "macOS.app"
-               BlueprintName = "macOS"
+               BuildableName = "DM50.app"
+               BlueprintName = "DM50"
                ReferencedContainer = "container:dm50.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -59,8 +59,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3B8455CA2CDE86AB00813F12"
-            BuildableName = "macOS.app"
-            BlueprintName = "macOS"
+            BuildableName = "DM50.app"
+            BlueprintName = "DM50"
             ReferencedContainer = "container:dm50.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -76,8 +76,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3B8455CA2CDE86AB00813F12"
-            BuildableName = "macOS.app"
-            BlueprintName = "macOS"
+            BuildableName = "DM50.app"
+            BlueprintName = "DM50"
             ReferencedContainer = "container:dm50.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -29,9 +29,10 @@ jobs:
                     -scheme macOS \
                     -destination 'platform=macOS,arch=x86_64' \
                     -configuration Release \
+                    -derivedDataPath ./build/macos \
                     build
           mkdir -p artifacts
-          cp build/Release/<nombre_ejecutable> artifacts/dm50
+          cp build/macos/Build/Products/Release/DM50 artifacts/dm50
 
       # Compress binary
       - name: Compress binary

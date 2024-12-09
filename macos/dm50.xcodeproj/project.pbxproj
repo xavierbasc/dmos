@@ -47,7 +47,7 @@
 
 /* Begin PBXFileReference section */
 		3B6C4D1F2D05B5EF00BBFEF3 /* SDL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDL.xcodeproj; path = ../external/SDL2/Xcode/SDL/SDL.xcodeproj; sourceTree = "<group>"; };
-		3B8455CB2CDE86AB00813F12 /* macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B8455CB2CDE86AB00813F12 /* DM50.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DM50.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BFA69DB2CEE6A370003AC2F /* libm.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libm.tbd; path = usr/lib/libm.tbd; sourceTree = SDKROOT; };
 		3BFA69DD2CEE6A3D0003AC2F /* libpthread.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libpthread.tbd; path = usr/lib/libpthread.tbd; sourceTree = SDKROOT; };
 		3BFA69DF2CEE6A440003AC2F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -122,7 +122,7 @@
 		3B8455CC2CDE86AB00813F12 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3B8455CB2CDE86AB00813F12 /* macOS.app */,
+				3B8455CB2CDE86AB00813F12 /* DM50.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,9 +149,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3B8455CA2CDE86AB00813F12 /* macOS */ = {
+		3B8455CA2CDE86AB00813F12 /* DM50 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3B8455DB2CDE86B000813F12 /* Build configuration list for PBXNativeTarget "macOS" */;
+			buildConfigurationList = 3B8455DB2CDE86B000813F12 /* Build configuration list for PBXNativeTarget "DM50" */;
 			buildPhases = (
 				3B8455C72CDE86AB00813F12 /* Sources */,
 				3B8455C82CDE86AB00813F12 /* Frameworks */,
@@ -166,11 +166,11 @@
 				3B8455CD2CDE86AB00813F12 /* macos */,
 				3B84562C2CDE896D00813F12 /* src */,
 			);
-			name = macOS;
+			name = DM50;
 			packageProductDependencies = (
 			);
 			productName = macos;
-			productReference = 3B8455CB2CDE86AB00813F12 /* macOS.app */;
+			productReference = 3B8455CB2CDE86AB00813F12 /* DM50.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -207,7 +207,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				3B8455CA2CDE86AB00813F12 /* macOS */,
+				3B8455CA2CDE86AB00813F12 /* DM50 */,
 			);
 		};
 /* End PBXProject section */
@@ -444,7 +444,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3B8455DB2CDE86B000813F12 /* Build configuration list for PBXNativeTarget "macOS" */ = {
+		3B8455DB2CDE86B000813F12 /* Build configuration list for PBXNativeTarget "DM50" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3B8455DC2CDE86B000813F12 /* Debug */,
