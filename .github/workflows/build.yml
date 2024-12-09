@@ -32,13 +32,13 @@ jobs:
                     -derivedDataPath ./build/macos \
                     build
           mkdir -p artifacts
-          cp build/macos/Build/Products/Release/DM50.app artifacts/dm50
-
+          cp -R build/macos/Build/Products/Release/DM50.app artifacts/DM50.app
+          
       # Compress binary
       - name: Compress binary
         run: |
           cd artifacts
-          zip dm50-macos.zip dm50
+          zip -r DM50-macos.zip DM50.app
 
       # Subir el binario comprimido como un artefacto del release
       - name: Create Release
@@ -58,10 +58,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./artifacts/dm50-macos.zip
-          asset_name: dm50-macos.zip
+          asset_path: ./artifacts/DM50-macos.zip
+          asset_name: DM50-macos.zip
           asset_content_type: application/zip
-
+        
   build-linux:
     runs-on: ubuntu-latest
     steps:
