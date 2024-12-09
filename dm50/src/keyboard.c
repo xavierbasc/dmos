@@ -3,12 +3,21 @@
 //AUTHOR: Damien Sticklen
 //DATE: 2024-12-07
 
+#include <stdio.h>
 #include "keyboard.h"
 
 //Converts an x,y coordinate to a recognised keypress
 //TODO: Recompute x,y values based on scaling
-KeyPress getKeyPress(int x, int y)
+KeyPress getKeyPress(int x, int y, int scale)
 {
+    printf("scale %d\n", scale);
+
+    //Need to be careful of scale == 0
+    x /= scale;
+    y /= scale;
+
+    printf("Scaled x,y: (%d,%d)\n", x, y);
+
     if (AC_X_POS <= x && x <= AC_X_POS + AC_WIDTH && AC_Y_POS <= y && y <= AC_Y_POS + AC_HEIGHT)    
     { 
         return ALL_CLEAR;
