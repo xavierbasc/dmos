@@ -12,7 +12,7 @@ on:
 
 jobs:
   build-macos:
-    name: Build macOS Binary
+    name: Build macOS
     runs-on: macos-latest
 
     steps:
@@ -68,6 +68,7 @@ jobs:
           asset_content_type: application/zip
         
   build-linux:
+    name: Build Linux
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -86,6 +87,7 @@ jobs:
           path: build/bin/*
 
   build-windows:
+    name: Build Windows
     runs-on: windows-latest
     steps:
       - name: Check out repository
