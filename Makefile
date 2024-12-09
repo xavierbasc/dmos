@@ -28,16 +28,14 @@ ifeq ($(PLATFORM),macos)
     SDL2_INCLUDE = /Library/Frameworks/SDL2.framework/Headers
     LDFLAGS_SDL = -framework SDL2
 else ifeq ($(PLATFORM),windows)
-    # Ejemplo: Ruta SDL2 en Windows (ajustar según configuración)
     SDL2_LIB = -lSDL2
     SDL2_INCLUDE = C:/path/to/SDL2/include
     LDFLAGS_SDL = -L/path/to/SDL2/lib -lSDL2
 else ifeq ($(PLATFORM),linux)
-    # Ejemplo: Ruta SDL2 en Windows (ajustar según configuración)
     # Configuración por defecto para Linux
     SDL2_LIB = ./external/SDL2/build
     SDL2_INCLUDE = ./external/SDL2/include/
-    LDFLAGS_SDL = -lSDL2 -Wl,-Bdynamic -lm -lasound -lm -ldl -lpthread -lpulse -pthread -lsamplerate -lX11 -lXext -lXcursor -lXi -lXfixes -lXrandr -lXss -ldrm -lgbm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -ldecor-0 -lpthread
+    LDFLAGS_SDL = -lSDL2 -Wl,-Bdynamic -lm -lasound -lm -ldl -lpthread -lpulse -pthread -lX11 -lXext -lXcursor -lXi -lXfixes -lXrandr -lXss -ldrm -lgbm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -ldecor-0 -lpthread
 endif
 
 # Source and object files

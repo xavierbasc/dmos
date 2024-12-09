@@ -16,18 +16,15 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      # clone repo
       - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Clone SDL2
         run: git clone --depth=1 --branch release-2.30.9 https://github.com/libsdl-org/SDL.git external/SDL2
 
-      # Xcode 16.1
       - name: Set Xcode version to 16.1
         run: sudo xcode-select -s /Applications/Xcode_16.1.app/Contents/Developer
 
-      # Xcode compilation
       - name: Build binary
         run: |
           xcodebuild -project macos/dm50.xcodeproj \
@@ -36,71 +33,72 @@ jobs:
                     -configuration Release \
                     -derivedDataPath ./build/macos \
                     build
-          mkdir -p artifacts
-          cp -R build/macos/Build/Products/Release/DM50.app artifacts/DM50.app
-          
-      # Compress binary
-      - name: Compress binary
+          mkdir -p artifacts/macos
+          cp -R build/macos/Build/Products/Release/DM50.app artifacts/macos/
+
+      - name: Compress artifacts
         run: |
-          cd artifacts
+          cd artifacts/macos
           zip -r DM50-macos.zip DM50.app
 
-      # Subir el binario comprimido como un artefacto del release
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload macOS artifacts
+        uses: actions/upload-artifact@v3
         with:
-          tag_name: ${{ github.ref_name }}
-          release_name: Release ${{ github.ref_name }}
-          draft: false
-          prerelease: false
+          name: macos-artifacts
+          path: artifacts/macos/
 
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./artifacts/DM50-macos.zip
-          asset_name: DM50-macos.zip
-          asset_content_type: application/zip
-        
   build-linux:
     name: Build Linux
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check out repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Install SDL2
         run: sudo apt-get update && sudo apt-get install -y libsdl2-dev
 
       - name: Build for Linux
-        run: make PLATFORM=linux
+        run: |
+          make PLATFORM=linux
+          mkdir -p artifacts/linux
+          cp dm50/bin/linux/* artifacts/linux/
 
-      - name: Upload Linux artifact
+      - name: Compress artifacts
+        run: |
+          cd artifacts/linux
+          zip -r DM50-linux.zip .
+
+      - name: Upload Linux artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: linux-binary
-          path: build/bin/*
+          name: linux-artifacts
+          path: artifacts/linux/
 
   build-windows:
     name: Build Windows
     runs-on: windows-latest
+
     steps:
-      - name: Check out repository
+      - name: Checkout code
         uses: actions/checkout@v3
         
       - name: Install SDL2
         run: choco install sdl2
-        
+
       - name: Build for Windows
-        run: make PLATFORM=windows
-        
-      - name: Upload Windows artifact
+        run: |
+          make PLATFORM=windows
+          mkdir -p artifacts/windows
+          cp build/bin/*.exe artifacts/windows/
+
+      - name: Compress artifacts
+        run: |
+          cd artifacts/windows
+          zip -r DM50-windows.zip .
+
+      - name: Upload Windows artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: windows-binary
-          path: build/bin/*.exe
+          name: windows-artifacts
+          path: artifacts/windows/
