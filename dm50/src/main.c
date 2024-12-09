@@ -91,24 +91,18 @@ int main(int argc, char* argv[])
 
     int scaleX, scaleY;
     
-    if (strcmp(SDL_GetPlatform(), "iOS") == 0) {
-        scaleX = screenWidth / SCREEN_WIDTH;
-        scaleY = screenHeight / SCREEN_HEIGHT;
-    } else {
-        // Obtén el tamaño de la pantalla
-        SDL_DisplayMode displayMode;
-        if (SDL_GetCurrentDisplayMode(0, &displayMode) != 0) {
-            fprintf(stderr, "Error getting display mode: %s\n", SDL_GetError());
-            SDL_Quit();
-            return 1;
-        }
-        screenWidth = displayMode.w;
-        screenHeight = displayMode.h;
-        
-        // Calcula la escala máxima manteniendo la proporción 50x170
-        scaleX = screenWidth * 0.80 / SCREEN_WIDTH;
-        scaleY = screenHeight * 0.80 / SCREEN_HEIGHT;
+    SDL_DisplayMode displayMode;
+    if (SDL_GetCurrentDisplayMode(0, &displayMode) != 0) {
+        fprintf(stderr, "Error getting display mode: %s\n", SDL_GetError());
+        SDL_Quit();
+        return 1;
     }
+    screenWidth = displayMode.w;
+    screenHeight = displayMode.h;
+    
+    // Calcula la escala máxima manteniendo la proporción 50x170
+    scaleX = screenWidth * 0.80 / SCREEN_WIDTH;
+    scaleY = screenHeight * 0.80 / SCREEN_HEIGHT;
 
 #if defined linux && SDL_VERSION_ATLEAST(2, 0, 8)
     // Disable compositor bypass
@@ -120,26 +114,19 @@ int main(int argc, char* argv[])
 #endif
     SDL_Window *window;
 
-    if (strcmp(SDL_GetPlatform(), "iOS") == 0) {
-        window = SDL_CreateWindow(NULL,
-            SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-            0, 0, SDL_WINDOW_FULLSCREEN|SDL_WINDOW_ALLOW_HIGHDPI
-        );
-    } else {
-        int scale = (scaleX < scaleY) ? scaleX : scaleY;
+    int scale = (scaleX < scaleY) ? scaleX : scaleY;
 
-        // Asegura una escala mínima de 1 para evitar problemas
-        if (scale < 1) scale = 1;
+    // Asegura una escala mínima de 1 para evitar problemas
+    if (scale < 1) scale = 1;
 
-        // Define el tamaño de la ventana escalada
-        windowWidth = SCREEN_WIDTH * scale;
-        windowHeight = SCREEN_HEIGHT * scale;
+    // Define el tamaño de la ventana escalada
+    windowWidth = SCREEN_WIDTH * scale;
+    windowHeight = SCREEN_HEIGHT * scale;
 
-        window = SDL_CreateWindow("DM50",
-              SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-              windowWidth, windowHeight,
-              SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI);
-    }
+    window = SDL_CreateWindow("DM50",
+          SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+          windowWidth, windowHeight,
+          SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI);
     
     
     if(!window)
@@ -152,26 +139,9 @@ int main(int argc, char* argv[])
         SDL_GetWindowSize(window, &screenWidth, &screenHeight);
         SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
         
-        if (strcmp(SDL_GetPlatform(), "iOS") == 0) {
-            //SDL_RenderSetLogicalSize(renderer, screenWidth, screenHeight);
-            SDL_GetRendererOutputSize(renderer, &screenWidth, &screenHeight);
-           // SDL_RenderSetIntegerScale(renderer, SDL_TRUE);
+        SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+        SDL_RenderSetIntegerScale(renderer, SDL_TRUE);
 
-            // PIXEL PERFECT
-            SDL_RenderSetIntegerScale(renderer, SDL_TRUE);
-            scaleX = screenWidth / SCREEN_WIDTH;
-            scaleY = screenHeight /SCREEN_HEIGHT;
-            SDL_RenderSetScale(renderer, scaleX, scaleX);
-            SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH*scaleX, SCREEN_HEIGHT*scaleX);
-
-        } else {
-            SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
-            SDL_RenderSetIntegerScale(renderer, SDL_TRUE);
-        }
-
-
-        
-        
         SDL_Texture* texture = load_img_from_memory(dm50_skin_gif, dm50_skin_gif_len, renderer);
 
         if (!texture) {
