@@ -7,47 +7,55 @@ on:
 
 jobs:
   build-macos:
+    name: Build macOS Binary
     runs-on: macos-latest
-    steps:
-      - name: Set up Xcode
-        uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: latest-stable
 
-      - name: Check out repository
+    steps:
+      # clone repo
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Clone SDL2
         run: git clone --depth=1 --branch release-2.30.9 https://github.com/libsdl-org/SDL.git external/SDL2
 
-      - name: Build SDL2
+      # Xcode compilation
+      - name: Build binary
         run: |
-          cd external/SDL2
-          ./configure --enable-static --disable-shared --host=x86_64-apple-darwin --build=x86_64-apple-darwin
-          make
-          cp build/.libs/libSDL2.a build/libSDL2_x86_64.a
-          make clean
-          ./configure --enable-static --disable-shared --host=arm-apple-darwin --build=arm-apple-darwin
-          make
-          cp build/.libs/libSDL2.a build/libSDL2_arm.a
-          lipo -create build/libSDL2_x86_64.a build/libSDL2_x86_64.a -output build/libSDL2.a
-          cd ../../..
+          xcodebuild -project macos/dm50.xcodeproj \
+                    -scheme macOS \
+                    -destination 'platform=macOS,arch=x86_64' \
+                    -configuration Release \
+                    build
+          mkdir -p artifacts
+          cp build/Release/<nombre_ejecutable> artifacts/dm50
 
-      - name: Build for macOS
-        run: make PLATFORM=macos
+      # Compress binary
+      - name: Compress binary
+        run: |
+          cd artifacts
+          zip dm50-macos.zip dm50
 
-      - name: Install create-dmg
-        run: brew install create-dmg
-
-      - name: Create macOS installer
-        run: make install-macos PLATFORM=macos
-      
-      - name: Upload macOS artifact
-        uses: actions/upload-artifact@v3
+      # Subir el binario comprimido como un artefacto del release
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          artifacts: build/dm50.dmg
-          name: "DM50 Installer for macOS"
-          path: build/dm50.dmg
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifacts/dm50-macos.zip
+          asset_name: dm50-macos.zip
+          asset_content_type: application/zip
 
   build-linux:
     runs-on: ubuntu-latest
