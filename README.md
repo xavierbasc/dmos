@@ -12,7 +12,7 @@
 
 # Download repository
 
-[Download the latest compiled version](releases/latest)
+[Download the latest compiled version](/releases)
 
 ```shell
 git clone https://github.com/xavierbasc/DMOS.git`
