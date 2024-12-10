@@ -1,3 +1,6 @@
+![Build status](https://github.com/xavierbasc/dmos/actions/workflows/build.yml/badge.svg)
+[Last release](https://github.com/xavierbasc/dmos/releases/latest)
+
 # DM50 Operative System
 
 # Prerequisites
