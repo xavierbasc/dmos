@@ -3,6 +3,8 @@
 
 # DM50 Operative System
 
+The project develops both the operating system for the DM50 calculator, called DMOS, and the applications to run/emulate the calculator on operating systems such as Windows, Linux, macOS, iOS, and Android. It also includes the firmware required to update the physical DM50 calculator.
+
 # Prerequisites
 
 - gcc
