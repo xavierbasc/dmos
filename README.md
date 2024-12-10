@@ -1,5 +1,4 @@
 ![Build status](https://github.com/xavierbasc/dmos/actions/workflows/build.yml/badge.svg)
-[Last release](https://github.com/xavierbasc/dmos/releases/latest)
 
 # DM50 Operative System
 
@@ -12,6 +11,8 @@
 - create-dmg (macos: brew install create-dmg)
 
 # Download repository
+
+[Download the latest compiled version](releases/latest)
 
 ```shell
 git clone https://github.com/xavierbasc/DMOS.git`
