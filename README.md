@@ -1,5 +1,3 @@
-![Build status](https://github.com/xavierbasc/dmos/actions/workflows/build.yml/badge.svg)
-
 [![Linux](https://img.shields.io/badge/Linux-available-brightgreen?logo=linux)](https://github.com/xavierbasc/dmos/releases)
 [![macOS](https://img.shields.io/badge/macOS-available-silver?logo=apple)](https://github.com/xavierbasc/dmos/releases)
 
