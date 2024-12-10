@@ -40,6 +40,7 @@ jobs:
         run: |
           cd artifacts/macos
           zip -r DM50-macos.zip DM50.app
+          rm -rf DM50.app
 
       - name: Upload macOS artifacts
         uses: actions/upload-artifact@v3
@@ -62,43 +63,16 @@ jobs:
         run: |
           make PLATFORM=linux
           mkdir -p artifacts/linux
-          cp dm50/bin/linux/* artifacts/linux/
+          cp dm50/bin/linux/dm50 artifacts/linux/
 
       - name: Compress artifacts
         run: |
           cd artifacts/linux
           zip -r DM50-linux.zip .
+          rm -rf dm50
 
       - name: Upload Linux artifacts
         uses: actions/upload-artifact@v3
         with:
           name: linux-artifacts
           path: artifacts/linux/
-
-  build-windows:
-    name: Build Windows
-    runs-on: windows-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        
-      - name: Install SDL2
-        run: choco install sdl2
-
-      - name: Build for Windows
-        run: |
-          make PLATFORM=windows
-          mkdir -p artifacts/windows
-          cp build/bin/*.exe artifacts/windows/
-
-      - name: Compress artifacts
-        run: |
-          cd artifacts/windows
-          zip -r DM50-windows.zip .
-
-      - name: Upload Windows artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: windows-artifacts
-          path: artifacts/windows/
