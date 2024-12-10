@@ -11,11 +11,8 @@ The project develops both the operating system for the DM50 calculator, called D
 - make
 - cmake
 - git
-- create-dmg (macos: brew install create-dmg)
 
 # Download repository
-
-[Download the latest compiled version](https://github.com/xavierbasc/dmos/releases)
 
 ```shell
 git clone https://github.com/xavierbasc/DMOS.git`
