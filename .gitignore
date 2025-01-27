@@ -37,3 +37,6 @@ Temporary Items
 .apdisk
 *.xcuserstate
 *.o
+
+# Ignore static lib files
+*.a
