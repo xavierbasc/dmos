@@ -164,7 +164,11 @@ int main(int argc, char* argv[])
             bool quit = false;
 
             int width, height;
+
             SDL_GetRendererOutputSize(renderer, &width, &height);
+            SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF); // Red
+            SDL_RenderCopy(renderer, texture, NULL, NULL);
+            SDL_RenderPresent(renderer);
             
             // Event loop
             while(!quit)
@@ -179,21 +183,35 @@ int main(int argc, char* argv[])
                 {
                     quit = true;
                 }
-                else if (e.type == SDL_MOUSEBUTTONDOWN)
+                else if (e.type == SDL_MOUSEBUTTONUP)
                 {
                     int x, y;
                     SDL_GetMouseState(&x, &y);
                     KeyPress keyPress = getKeyPress(x, y, scaleY);
                     printf("Mouse button down detected(%d,%d)\n", x, y);
                     printf("Key detected: %d\n", keyPress);
+
+                    if (keyPress == ALL_CLEAR)
+                    {
+                       printf("All clear detected\n");
+                       SDL_SetRenderDrawColor(renderer, 196, 191, 185, 0xFF);
+                       SDL_Rect inputRect = {1, 6, 128, 50};
+                       SDL_RenderFillRect(renderer, &inputRect);
+                       SDL_RenderPresent(renderer);
+                    }
+                    
+                    //SDL_RenderCopy(renderer, texture, NULL, NULL);
+                }
+                else
+                {
+                    //printf("Unhandled event type: %d\n", e.type);
                 }
                 
                 //SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF); // White
-                SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF); // White
-                SDL_RenderClear(renderer); // Clear screen
+                //SDL_RenderClear(renderer); // Clear screen
 
-                SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF); // Red
-                SDL_RenderCopy(renderer, texture, NULL, NULL);
+                //SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF); // Red
+                //SDL_RenderCopy(renderer, texture, NULL, NULL);
                 
                 /*
                 SDL_SetRenderDrawColor(renderer, 0, 255, 0, 0xFF);
@@ -202,20 +220,21 @@ int main(int argc, char* argv[])
                 */
 
                 // LCD
-                SDL_SetRenderDrawColor(renderer, 196, 191, 185, 0xFF);
-                SDL_Rect rect = {1, 1, 128, 64};
-                SDL_RenderFillRect(renderer, &rect);
+                //SDL_SetRenderDrawColor(renderer, 196, 191, 185, 0xFF);
+                //SDL_Rect rect = {1, 1, 128, 64};
+                //SDL_RenderFillRect(renderer, &rect);
 
-                SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF); // White
-                draw_text(renderer, ">01234567890123456789", 1, 1);
-                draw_text(renderer, ">ABCZabcz", 1, 7);
-                draw_text(renderer, "Hello World", 25, 30);
+                //SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF); // White
+                //draw_text(renderer, ">01234567890123456789", 1, 1);
+                //draw_text(renderer, ">ABCZabcz", 1, 7);
+                //draw_text(renderer, "Hello World", 25, 30);
+
 
                 //SDL_RenderDrawPoint(renderer, 0, 30);
                 //SDL_RenderDrawPoint(renderer, SCREEN_WIDTH-1, 30);
 
                 // Draw text
-                SDL_RenderPresent(renderer);
+                //SDL_RenderPresent(renderer);
             }
 
             // Destroy renderer
